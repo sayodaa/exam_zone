@@ -16,7 +16,7 @@ import 'package:graduation/features/overwall/presentation/views/overwall_screen.
 import 'package:graduation/features/profile/edit_profile.dart';
 import 'package:graduation/features/profile/profile_screen.dart';
 import 'package:graduation/features/settings/presentation/views/settings_screen.dart';
-import 'package:graduation/features/splash/presentation/splash_view.dart';
+import 'package:graduation/features/splash/presentation/views/splash_view.dart';
 
 class AppRoutes {
   static const String login = '/login';
@@ -47,47 +47,31 @@ class AppRoutes {
         return BaseRoute(page: const MainView());
       case profile:
         return BaseRoute(page: const ProfileScreen());
-        case editProfile:
-        return BaseRoute(page: const EditProfileScreen()); 
+      case editProfile:
+        return BaseRoute(page: const EditProfileScreen());
       case login:
-        return BaseRoute(
-          page:  LoginScreen(),
-        );
-        case signUp:
-        return BaseRoute(
-          page: SignupScreen(),
-        );
-        
-        case home:
-        return BaseRoute(
-          page: const HomeScreen(),
-        );
-        case settingsView:
-        return BaseRoute(
-          page: const SettingsScreen(),
-        );
-        case overWall:
-        return BaseRoute(
-          page: const ExamResultsScreen(),
-        );
-        case examResultsStudentsScreen:
-        return BaseRoute(
-          page: const ExamResultsStudentsScreen(),
-        );
-        case examScreen:
+        return BaseRoute(page: LoginScreen());
+      case signUp:
+        return BaseRoute(page: SignupScreen());
+
+      case home:
+        return BaseRoute(page: const HomeScreen());
+      case settingsView:
+        return BaseRoute(page: const SettingsScreen());
+      case overWall:
+        return BaseRoute(page: const ExamResultsScreen());
+      case examResultsStudentsScreen:
+        return BaseRoute(page: const ExamResultsStudentsScreen());
+      case examScreen:
         return BaseRoute(
           page: ExamScreen(
             generatedQuestions: settings.arguments as List<QuestionModel>?,
           ),
         );
-        case generateQuestion:
-        return BaseRoute(
-          page: const GenerateExamScreen(),
-        );
-        case essayAi:
-        return BaseRoute(
-          page: const EssayAiView(),
-        );
+      case generateQuestion:
+        return BaseRoute(page: const GenerateExamScreen());
+      case essayAi:
+        return BaseRoute(page: const EssayAiView());
       case createExam:
         return BaseRoute(page: const CreateExamScreen());
       default:
