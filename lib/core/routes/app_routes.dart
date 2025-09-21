@@ -6,7 +6,7 @@ import 'package:graduation/features/auth/presentation/screens/login_screen.dart'
 import 'package:graduation/features/auth/presentation/screens/signup_screen.dart';
 import 'package:graduation/features/home/presentation/views/home_screen.dart';
 import 'package:graduation/features/home/presentation/views/main_view.dart';
-import 'package:graduation/features/onboarding/onboard_view.dart';
+import 'package:graduation/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:graduation/features/overwall/data/quation_model.dart';
 import 'package:graduation/features/overwall/presentation/views/exam_screen.dart';
 import 'package:graduation/features/overwall/presentation/views/create_exam.dart';
@@ -40,7 +40,7 @@ class AppRoutes {
   static Route<void> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case onBoarding:
-        return BaseRoute(page: const OnBoardingScreen());
+        return BaseRoute(page: const OnBoardingView());
       case splash:
         return BaseRoute(page: const SplashView());
       case mainV:
