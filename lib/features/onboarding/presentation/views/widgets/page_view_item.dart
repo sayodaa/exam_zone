@@ -16,8 +16,10 @@ class PageViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(child: Image.asset(image)),
-        const SizedBox(height: 20),
+        const SizedBox(height: 60),
+
+        Image.asset(image),
+        const SizedBox(height: 30),
         Text(
           title,
           style: const TextStyle(

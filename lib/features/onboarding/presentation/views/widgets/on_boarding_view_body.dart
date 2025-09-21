@@ -66,10 +66,10 @@ class _OnBoardingViewsBodyState extends State<OnBoardingViewsBody> {
             activeDotColor: Colors.blue,
             dotHeight: 10,
             dotWidth: 10,
-            spacing: 5,
+            spacing: 10,
           ),
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 30),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: ElevatedButton(
@@ -94,7 +94,7 @@ class _OnBoardingViewsBodyState extends State<OnBoardingViewsBody> {
             ),
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 90),
       ],
     );
   }
