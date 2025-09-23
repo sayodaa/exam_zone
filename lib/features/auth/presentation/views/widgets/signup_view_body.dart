@@ -9,7 +9,14 @@ import 'package:graduation/features/auth/presentation/views/widgets/signin_secti
 import 'package:graduation/features/auth/presentation/views/widgets/signup_form.dart';
 
 class SignupBody extends StatelessWidget {
-  const SignupBody({super.key});
+  const SignupBody({super.key, this.onSubmit});
+
+  final void Function({
+    required String name,
+    required String email,
+    required String password,
+  })?
+  onSubmit;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +33,8 @@ class SignupBody extends StatelessWidget {
             SizedBox(height: AppColorsStyles.defaultPadding.h * 2.5),
             SectionTitle(text: context.translate(LangKeys.welcome)),
             SizedBox(height: AppColorsStyles.defaultPadding.h * 1.875),
-            const SignupForm(),
+            SignupForm(onSubmit: onSubmit),
             SizedBox(height: AppColorsStyles.defaultPadding.h * 1.25),
-            SizedBox(height: AppColorsStyles.defaultPadding.h),
             HaveAnAccount(),
             SizedBox(height: AppColorsStyles.defaultPadding.h * 1.25),
           ],
