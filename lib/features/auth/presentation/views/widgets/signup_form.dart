@@ -11,7 +11,7 @@ import 'package:graduation/features/auth/presentation/views/widgets/password_fei
 
 class SignupForm extends StatefulWidget {
   const SignupForm({super.key, this.onSubmit});
-  final VoidCallback? onSubmit; // توصّلها من فوق لو حبيت
+  final VoidCallback? onSubmit;
 
   @override
   State<SignupForm> createState() => _SignupFormState();
@@ -35,7 +35,6 @@ class _SignupFormState extends State<SignupForm> {
 
   void _submit() {
     if (_formKey.currentState!.validate()) {
-      // UI فقط — لو عايز لوجيك وصّل onSubmit من برّه
       widget.onSubmit?.call();
     }
   }

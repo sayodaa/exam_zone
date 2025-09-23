@@ -13,7 +13,6 @@ import 'package:graduation/features/overwall/presentation/views/create_exam.dart
 import 'package:graduation/features/overwall/presentation/views/exam_result2.dart';
 import 'package:graduation/features/overwall/presentation/views/generate_quation.dart';
 import 'package:graduation/features/overwall/presentation/views/overwall_screen.dart';
-import 'package:graduation/features/profile/edit_profile.dart';
 import 'package:graduation/features/profile/profile_screen.dart';
 import 'package:graduation/features/settings/presentation/views/settings_screen.dart';
 import 'package:graduation/features/splash/presentation/views/splash_view.dart';
@@ -48,7 +47,7 @@ class AppRoutes {
       case profile:
         return BaseRoute(page: const ProfileScreen());
       case editProfile:
-        return BaseRoute(page: const EditProfileScreen());
+        return BaseRoute(page: const ProfileScreen());
       case login:
         return BaseRoute(page: LoginScreen());
       case signUp:
