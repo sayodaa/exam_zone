@@ -8,6 +8,8 @@ import 'package:graduation/features/auth/presentation/views/widgets/dont_have_an
 import 'package:graduation/features/auth/presentation/views/widgets/signin_form.dart';
 import 'package:graduation/features/auth/presentation/views/widgets/signin_section_title.dart';
 import 'package:graduation/features/auth/presentation/views/widgets/social%20auth.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:graduation/features/auth/presentation/managers/signin_cubit/signin_cubit.dart';
 
 class LoginBody extends StatelessWidget {
   const LoginBody({super.key});
@@ -27,9 +29,17 @@ class LoginBody extends StatelessWidget {
             SizedBox(height: AppColorsStyles.defaultPadding.h * 2.5),
             SectionTitle(text: context.translate(LangKeys.welcomeBack)),
             SizedBox(height: AppColorsStyles.defaultPadding.h * 1.875),
-            const LoginForm(),
+            LoginForm(
+              onSubmit: ({required String email, required String password}) {
+                context.read<SigninCubit>().signin(email, password);
+              },
+            ),
             SizedBox(height: AppColorsStyles.defaultPadding.h * 1.25),
-            SocialAuthSection(),
+            SocialAuthSection(
+              onGoogle: () {
+                context.read<SigninCubit>().signinWithGoogle();
+              },
+            ),
             SizedBox(height: AppColorsStyles.defaultPadding.h),
             const DontHaveAnAccount(),
             SizedBox(height: AppColorsStyles.defaultPadding.h * 1.25),

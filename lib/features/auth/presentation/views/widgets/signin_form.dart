@@ -10,7 +10,8 @@ import 'package:graduation/features/auth/presentation/views/widgets/password_fei
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key, this.onSubmit});
-  final VoidCallback? onSubmit;
+  final void Function({required String email, required String password})?
+  onSubmit;
 
   @override
   State<LoginForm> createState() => _LoginFormState();
@@ -30,7 +31,10 @@ class _LoginFormState extends State<LoginForm> {
 
   void _submit() {
     if (_formKey.currentState!.validate()) {
-      widget.onSubmit?.call();
+      widget.onSubmit?.call(
+        email: _emailCtrl.text.trim(),
+        password: _passwordCtrl.text.trim(),
+      );
     }
   }
 
