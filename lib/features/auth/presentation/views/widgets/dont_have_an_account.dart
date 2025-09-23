@@ -6,8 +6,7 @@ import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/extensions/context_extension.dart';
 
 class DontHaveAnAccount extends StatelessWidget {
-  const DontHaveAnAccount({super.key, this.onPressed});
-  final VoidCallback? onPressed;
+  const DontHaveAnAccount({super.key});
 
   @override
   Widget build(BuildContext context) {
