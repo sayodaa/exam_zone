@@ -10,7 +10,6 @@ class EssayCorrectionModel {
   });
 
   factory EssayCorrectionModel.fromRawText(String raw) {
-    // تحليل النص الناتج من الـ AI بناءً على بنية محددة متوقعة.
     final scoreReg = RegExp(r'Score\s*[:\-]?\s*(\d{1,2})');
     final mistakesReg = RegExp(r'(Mistakes|Errors|Issues)\s*[:\-]?\s*(.*?)\n\n', dotAll: true);
     final feedbackReg = RegExp(r'(Feedback|Comment|Advice)\s*[:\-]?\s*(.*)', dotAll: true);

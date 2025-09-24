@@ -12,14 +12,14 @@ extension ContextExt on BuildContext {
   // // style
   // TextStyle get textStyle => Theme.of(this).textTheme.displaySmall!;
 
-  // //Language
+  //! Language
   String translate(String langkey,) {
     return AppLocalizations.of(this)!.translate(langkey).toString();
   }
 
-  //Navigation
+  //! Navigation
 
-  Future<dynamic> pushName(String routeName, {Object? arguments}) {
+  Future<dynamic> pushNamed(String routeName, {Object? arguments}) {
     return Navigator.of(this).pushNamed(routeName, arguments: arguments);
   }
 
@@ -40,5 +40,5 @@ extension ContextExt on BuildContext {
 
   void pop() => Navigator.of(this).pop();
 
-  // context.pushName(AppRoutes.login);
+  // context.pushNamed(AppRoutes.login);
 }

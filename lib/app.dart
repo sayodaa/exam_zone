@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation/core/language/app_localizations_setup.dart';
 import 'package:graduation/core/routes/app_routes.dart';
@@ -8,7 +7,6 @@ import 'package:graduation/core/services/shared_pref/shared_pref.dart';
 import 'package:graduation/core/styles/theme/app_themes_styles.dart';
 import 'package:graduation/core/styles/theme/theme_provider.dart';
 import 'package:graduation/core/utils/app_string.dart';
-import 'package:graduation/features/overwall/presentation/cubit/generate_cubit.dart';
 import 'package:provider/provider.dart';
 
 class ExamZone extends StatelessWidget {
@@ -16,13 +14,8 @@ class ExamZone extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => ThemeProvider()),
-        BlocProvider(create: (_) => GenerateExamCubit()),
-      ],
-      child: const ExamZoneApp(),
-    );
+    return  ChangeNotifierProvider(create: (_) => ThemeProvider(),
+    child: const ExamZoneApp());
   }
 }
 

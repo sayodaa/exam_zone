@@ -1,11 +1,7 @@
 import 'dart:convert';
 
-import 'package:graduation/features/overwall/data/quation_model.dart';
+import 'package:graduation/features/generate_choise/data/models/quation_model.dart';
 import 'package:http/http.dart' as http;
-
-// Note: To use this code, you need to add the http package to your project.
-// Add this line to your pubspec.yaml file under dependencies:
-// http: ^1.2.1
 
 // --- Data Model for the Quiz Question ---
 // Using a class like this makes your code safer and easier to work with.
@@ -80,8 +76,6 @@ dont add backticks in respone
 // --- Private Helper Function for API Call ---
 // This function handles the direct communication with the DeepSeek API.
 Future<String> _generateWithAI(String predefinedRules) async {
-  // IMPORTANT: Replace with your actual API key.
-  // It is highly recommended to store your API key securely and not hardcode it.
   const String apiKey = 'sk-02e178544f904b9696c835285265f303';
   const String model = "deepseek-chat";
   final Uri apiUrl = Uri.parse("https://api.deepseek.com/v1/chat/completions");

@@ -39,7 +39,7 @@ class SignupScreen extends StatelessWidget {
             Future.delayed(const Duration(seconds: 1), () {
               SharedPref().setString(PrefKeys.uId, state.uId).then((value) {
                 if (context.mounted) {
-                  context.pushName(AppRoutes.mainV);
+                  context.pushNamed(AppRoutes.mainV);
                   ShowToast.showToastSuccessTop(
                     message: 'Regestration successful',
                   );

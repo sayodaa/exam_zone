@@ -1,5 +1,3 @@
-// lib/features/overwall/data/models/question_model.dart
-
 import 'package:graduation/core/language/lang_keys.dart';
 
 class QuestionModel {
@@ -13,7 +11,6 @@ class QuestionModel {
     required this.answer,
     required dynamic context,
   }) {
-    // التحقق من صحة البيانات
     if (question.isEmpty) {
       throw ArgumentError(context.translate(LangKeys.errorQuestionEmpty));
     }
@@ -44,7 +41,8 @@ class QuestionModel {
     return QuestionModel(
       question: json['question']?.toString() ?? '',
       choices: choices,
-      answer: answer, context: context,
+      answer: answer,
+      context: context,
     );
   }
 
@@ -55,7 +53,7 @@ class QuestionModel {
       'answer': answer,
     };
   }
-
+  //! هنا عدلت دالة toString علشان تديني التفاصيل في الكونسول
   @override
   String toString() {
     return 'QuestionModel(question: $question, choices: $choices, answer: $answer)';

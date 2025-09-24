@@ -47,7 +47,7 @@ class LoginScreen extends StatelessWidget {
             Future.delayed(const Duration(seconds: 1), () {
               SharedPref().setString(PrefKeys.uId, state.uId).then((value) {
                 if (context.mounted) {
-                  context.pushName(AppRoutes.mainV);
+                  context.pushNamed(AppRoutes.mainV);
                   ShowToast.showToastSuccessTop(message: 'Login successful');
                 }
               });
@@ -191,7 +191,7 @@ class LoginScreen extends StatelessWidget {
                                   onPressed: () {
                                     if (formKey.currentState!.validate()) {
                                       AuthCubit.get(context).login(
-                                        email: emailController.text,
+                                    email: emailController.text,
                                         password: passwordController.text,
                                       );
                                     }

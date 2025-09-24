@@ -57,10 +57,10 @@ class LangKeys {
   static const String submitExam = 'submitExam';
   static const String errorAnswerNotExist = 'errorAnswerNotExist';
   static const String errorQuestionEmpty = 'errorQuestionEmpty';
-  // static const String errorQuestionLength = 'errorQuestionLength';
-  // static const String errorAnswerLength = 'errorAnswerLength';
-  // static const String errorOptionLength = 'errorOptionLength';
-  // static const String errorOptionsEmpty = 'errorOptionsEmpty';
+  static const String errorQuestionLength = 'errorQuestionLength';
+  static const String errorAnswerLength = 'errorAnswerLength';
+  static const String errorOptionLength = 'errorOptionLength';
+  static const String errorOptionsEmpty = 'errorOptionsEmpty';
 
   // Exam Results related keys
   static const String examResults = 'examResults';

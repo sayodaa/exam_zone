@@ -20,6 +20,7 @@ void main() async {
         )
       : await Firebase.initializeApp();
   await SharedPref().instantiatePreferences();
+  SharedPref().clearPreferences();
   Bloc.observer = AppBlocObserver();
   runApp(ExamZone());
 }

@@ -6,7 +6,7 @@ import 'package:graduation/core/extensions/context_extension.dart';
 import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
 import 'package:graduation/core/styles/styles.dart';
-import 'package:graduation/features/overwall/data/quation_model.dart';
+import 'package:graduation/features/generate_choise/data/models/quation_model.dart';
 import 'package:graduation/features/overwall/presentation/widgets/build_question_card.dart';
 import 'package:graduation/features/overwall/presentation/widgets/essay_quation_card.dart';
 
