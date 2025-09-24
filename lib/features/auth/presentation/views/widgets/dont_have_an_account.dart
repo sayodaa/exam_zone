@@ -15,7 +15,7 @@ class DontHaveAnAccount extends StatelessWidget {
       child: HaveAuth(
         text: context.translate(LangKeys.dontHaveAccount),
         onPressed: () {
-          context.pushName(AppRoutes.signUp);
+          context.pushNamed(AppRoutes.signUp);
         },
       ),
     );
