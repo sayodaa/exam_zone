@@ -34,6 +34,7 @@ dependencies:
   cloud_firestore: ^5.6.11
   connectivity_plus: ^6.1.4
   cupertino_icons: ^1.0.8
+  dartz: ^0.10.1
   dio: ^5.8.0+1
   firebase_auth: ^5.6.2
   firebase_core: ^3.15.1
@@ -48,8 +49,10 @@ dependencies:
   flutter_svg: ^2.2.0
   fluttertoast: ^8.2.12
   freezed_annotation: ^3.0.0
+  google_sign_in: ^6.2.1
   http: ^1.4.0
   image_picker: ^1.1.2
+  modal_progress_hud_nsn: ^0.5.1
   open_file: ^3.5.10
   path_provider: ^2.1.5
   pdf: ^3.11.3
@@ -60,6 +63,7 @@ dependencies:
   shared_preferences: ^2.5.3
   equatable: ^2.0.7
   smooth_page_indicator: ^1.2.1
+
 
 dev_dependencies:
   flutter_lints: ^6.0.0

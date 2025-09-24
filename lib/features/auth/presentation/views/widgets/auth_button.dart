@@ -21,9 +21,7 @@ class AuthButton extends StatelessWidget {
           ),
         ),
         onPressed: onPressed,
-        // () {
-        //   Navigator.pushNamed(context, routeName);
-        // }
+
         child: TextApp(
           text: text,
           style: AppTextStyles.body16(

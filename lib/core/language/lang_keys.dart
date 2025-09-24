@@ -24,6 +24,7 @@ class LangKeys {
   static const String password = 'password';
   static const String continueWithGoogle = 'continueWithGoogle';
   static const String alreadyHaveAccount = 'alreadyHaveAccount';
+  static const String dontHaveAccount = 'dontHaveAccount';
   static const String forgotPassword = 'forgotPassword';
   static const String signUp = 'signUp';
   static const String youHaveAccount = 'youHaveAccount';

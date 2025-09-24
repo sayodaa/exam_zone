@@ -7,29 +7,25 @@ import 'package:graduation/core/routes/app_routes.dart';
 import 'package:graduation/core/styles/app_images.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
 
-class SplashView extends StatefulWidget {
-  const SplashView({super.key});
+class SplashViewBody extends StatefulWidget {
+  const SplashViewBody({super.key});
 
   @override
-  State<SplashView> createState() => _SplashViewState();
+  State<SplashViewBody> createState() => _SplashViewBodyState();
 }
 
-class _SplashViewState extends State<SplashView> {
+class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   void initState() {
     super.initState();
-
-    Future.delayed(const Duration(seconds: 3), () {
-      if (!mounted) return;
-      context.pushNamedAndRemoveUntil(AppRoutes.onBoarding);
-    });
+    navigator();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
-      body: Center(
+    return Container(
+      color: Theme.of(context).primaryColor,
+      child: Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.0.w),
           child: Column(
@@ -53,5 +49,12 @@ class _SplashViewState extends State<SplashView> {
         ),
       ),
     );
+  }
+
+  void navigator() {
+    Future.delayed(const Duration(seconds: 3), () {
+      if (!mounted) return;
+      context.pushNamedAndRemoveUntil(AppRoutes.onBoarding);
+    });
   }
 }
