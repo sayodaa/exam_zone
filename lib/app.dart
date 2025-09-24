@@ -48,11 +48,7 @@ class ExamZoneApp extends StatelessWidget {
             theme: AppThemes.lightTheme,
             darkTheme: AppThemes.darkTheme,
             themeMode: themeProvider.themeMode,
-            initialRoute: AppString.uId != null
-                ? AppRoutes.mainV
-                : onboard != null
-                ? AppRoutes.login
-                : AppRoutes.splash,
+            initialRoute: AppRoutes.mainV,
             onGenerateRoute: AppRoutes.onGenerateRoute,
           ),
         );

@@ -1,14 +1,11 @@
 import 'package:graduation/core/language/lang_keys.dart';
+import 'package:graduation/features/generate_choise/domain/entitys/question_entity.dart';
 
-class QuestionModel {
-  final String question;
-  final Map<String, String> choices;
-  final String answer;
-
+class QuestionModel extends QuestionEntity{
   QuestionModel({
-    required this.question,
-    required this.choices,
-    required this.answer,
+    required super.question,
+    required super.choices,
+    required super.answer,
     required dynamic context,
   }) {
     if (question.isEmpty) {

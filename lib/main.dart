@@ -5,9 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation/app.dart';
 import 'package:graduation/core/app/bloc_observer.dart';
 import 'package:graduation/core/services/shared_pref/shared_pref.dart';
+import 'package:graduation/core/services/singelton.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await initServiceLocator();
   Platform.isAndroid
       ? await Firebase.initializeApp(
           options: const FirebaseOptions(

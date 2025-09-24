@@ -1,7 +1,6 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation/features/auth/domain/entites/user_entity.dart';
 import 'package:graduation/features/auth/domain/repos/auth_repos.dart';
-import 'package:meta/meta.dart';
 
 part 'signin_state.dart';
 
