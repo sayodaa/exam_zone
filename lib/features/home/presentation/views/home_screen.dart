@@ -7,7 +7,7 @@ import 'package:graduation/core/language/app_localizations.dart';
 import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/routes/app_routes.dart';
 import 'package:graduation/core/styles/app_images.dart';
-import 'package:graduation/features/home/presentation/widgets/build_option_card.dart';
+import 'package:graduation/features/home/presentation/views/widgets/build_option_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
