@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:graduation/constantes.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
-import 'package:graduation/core/styles/styles.dart';
-
 
 class BuildInputField extends StatelessWidget {
   const BuildInputField({
@@ -24,7 +23,9 @@ class BuildInputField extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppColorsStyles.defaultBorderRadius.r),
+        borderRadius: BorderRadius.circular(
+          AppConstantes.defaultBorderRadius.r,
+        ),
         border: Border.all(color: Theme.of(context).dividerColor),
       ),
       child: TextFormField(
@@ -37,8 +38,8 @@ class BuildInputField extends StatelessWidget {
           hintText: label,
           hintStyle: AppTextStyles.mutedBody16(context),
           contentPadding: EdgeInsets.symmetric(
-            vertical: AppColorsStyles.defaultPadding.h,
-            horizontal: AppColorsStyles.defaultPadding.w,
+            vertical: AppConstantes.defaultPadding.h,
+            horizontal: AppConstantes.defaultPadding.w,
           ),
           border: InputBorder.none,
           enabledBorder: InputBorder.none,

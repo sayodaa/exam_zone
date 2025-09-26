@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:graduation/constantes.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
 import 'package:graduation/core/enums/generate_choise_state_enum.dart';
 import 'package:graduation/core/extensions/context_extension.dart';
 import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
-import 'package:graduation/core/styles/styles.dart';
 import 'package:graduation/features/generate_choise/presentation/cubit/generate_cubit_exam.dart';
 import 'package:graduation/features/generate_choise/presentation/cubit/generate_state_exam.dart';
 import 'package:graduation/features/generate_choise/presentation/widgets/generate_exam_button.dart';
@@ -24,8 +24,8 @@ class GenerateExamBody extends StatelessWidget {
       key: cubit.formKey,
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: AppColorsStyles.defaultPadding.w,
-          vertical: AppColorsStyles.defaultPadding.h,
+          horizontal: AppConstantes.defaultPadding.w,
+          vertical: AppConstantes.defaultPadding.h,
         ),
         child: SingleChildScrollView(
           child: Column(

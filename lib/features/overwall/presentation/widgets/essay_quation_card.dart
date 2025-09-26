@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:graduation/constantes.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
-import 'package:graduation/core/styles/styles.dart';
 
 class EssayQuationCard extends StatelessWidget {
   const EssayQuationCard({
@@ -29,7 +29,9 @@ class EssayQuationCard extends StatelessWidget {
       padding: EdgeInsets.all(16.r),
       decoration: BoxDecoration(
         color: Theme.of(context).cardTheme.color,
-        borderRadius: BorderRadius.circular(AppColorsStyles.defaultBorderRadius.r),
+        borderRadius: BorderRadius.circular(
+          AppConstantes.defaultBorderRadius.r,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,10 +41,7 @@ class EssayQuationCard extends StatelessWidget {
             style: AppTextStyles.semiBold16(context),
           ),
           SizedBox(height: 8.h),
-          TextApp(
-            text: question,
-            style: AppTextStyles.body14(context),
-          ),
+          TextApp(text: question, style: AppTextStyles.body14(context)),
           SizedBox(height: 12.h),
           if (!submitted)
             TextField(
@@ -55,10 +54,7 @@ class EssayQuationCard extends StatelessWidget {
               controller: TextEditingController(text: answer),
             )
           else
-            TextApp(
-              text: answer,
-              style: AppTextStyles.body14(context),
-            ),
+            TextApp(text: answer, style: AppTextStyles.body14(context)),
         ],
       ),
     );

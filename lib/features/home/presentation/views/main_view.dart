@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:graduation/constantes.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
 import 'package:graduation/core/extensions/context_extension.dart';
 import 'package:graduation/core/language/lang_keys.dart';
@@ -16,17 +17,14 @@ class MainView extends StatefulWidget {
   State<MainView> createState() => _MainViewState();
 }
 
-class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin {
+class _MainViewState extends State<MainView>
+    with SingleTickerProviderStateMixin {
   int _currentIndex = 0;
   late AnimationController _controller;
   late Animation<double> _animation;
 
   // Generate unique keys for each screen to force rebuild
-  final List<GlobalKey> _screenKeys = [
-    GlobalKey(),
-    GlobalKey(),
-    GlobalKey(),
-  ];
+  final List<GlobalKey> _screenKeys = [GlobalKey(), GlobalKey(), GlobalKey()];
 
   final List<Widget> _screens = const [
     HomeScreen(),
@@ -59,9 +57,10 @@ class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin
       duration: const Duration(milliseconds: 300),
       vsync: this,
     );
-    _animation = Tween<double>(begin: 0, end: 1).animate(
-      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
-    );
+    _animation = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
     _controller.forward();
   }
 
@@ -90,10 +89,7 @@ class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin
       body: IndexedStack(
         index: _currentIndex,
         children: List.generate(_screens.length, (index) {
-          return KeyedSubtree(
-            key: _screenKeys[index],
-            child: _screens[index],
-          );
+          return KeyedSubtree(key: _screenKeys[index], child: _screens[index]);
         }),
       ),
       bottomNavigationBar: _buildAnimatedBottomNavBar(context),
@@ -112,9 +108,14 @@ class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin
             offset: Offset(0, -2.h),
           ),
         ],
-        borderRadius: BorderRadius.vertical(top: Radius.circular(AppColorsStyles.defaultBorderRadius.r)),
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(AppConstantes.defaultBorderRadius.r),
+        ),
       ),
-      padding: EdgeInsets.symmetric(horizontal: AppColorsStyles.defaultPadding.w, vertical: 10.h),
+      padding: EdgeInsets.symmetric(
+        horizontal: AppConstantes.defaultPadding.w,
+        vertical: 10.h,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: List.generate(_navItems.length, (index) {
@@ -137,8 +138,12 @@ class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin
           return Container(
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
             decoration: BoxDecoration(
-              color: isSelected ? item.color.withValues(alpha: 0.1) : Colors.transparent,
-              borderRadius: BorderRadius.circular(AppColorsStyles.defaultBorderRadius.r),
+              color: isSelected
+                  ? item.color.withValues(alpha: 0.1)
+                  : Colors.transparent,
+              borderRadius: BorderRadius.circular(
+                AppConstantes.defaultBorderRadius.r,
+              ),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -162,7 +167,10 @@ class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin
                         size: 28.sp,
                         color: isSelected
                             ? item.color
-                            : Theme.of(context).bottomNavigationBarTheme.unselectedItemColor ?? Colors.grey,
+                            : Theme.of(context)
+                                      .bottomNavigationBarTheme
+                                      .unselectedItemColor ??
+                                  Colors.grey,
                       ),
                     ),
                   ],
@@ -174,7 +182,9 @@ class _MainViewState extends State<MainView> with SingleTickerProviderStateMixin
                       ? TextApp(
                           text: context.translate(item.labelKey),
                           style: AppTextStyles.caption12(context).copyWith(
-                            color: Theme.of(context).textTheme.bodyMedium?.color,
+                            color: Theme.of(
+                              context,
+                            ).textTheme.bodyMedium?.color,
                             fontWeight: FontWeight.bold,
                           ),
                         )

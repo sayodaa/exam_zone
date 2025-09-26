@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:graduation/constantes.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
-import 'package:graduation/core/styles/styles.dart';
 import 'package:graduation/features/overwall/presentation/widgets/custom_app_bar_for_exams.dart';
 
 class ExamResultsStudentsScreen extends StatelessWidget {
@@ -24,19 +24,19 @@ class ExamResultsStudentsScreen extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: const CustomAppBarForExams(text: 'Exam Results', icon: Icons.close),
+      appBar: const CustomAppBarForExams(
+        text: 'Exam Results',
+        icon: Icons.close,
+      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(
-          horizontal: AppColorsStyles.defaultPadding.w,
-          vertical: AppColorsStyles.defaultPadding.h / 2,
+          horizontal: AppConstantes.defaultPadding.w,
+          vertical: AppConstantes.defaultPadding.h / 2,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TextApp(
-              text: 'Students',
-              style: AppTextStyles.bold24(context),
-            ),
+            TextApp(text: 'Students', style: AppTextStyles.bold24(context)),
             SizedBox(height: 12.h),
             ...students.map((student) => BuildStudentTile(student: student)),
           ],
@@ -47,26 +47,25 @@ class ExamResultsStudentsScreen extends StatelessWidget {
 }
 
 class BuildStudentTile extends StatelessWidget {
-  const BuildStudentTile({
-    super.key,
-    required this.student,
-  });
+  const BuildStudentTile({super.key, required this.student});
 
   final Map<String, dynamic> student;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: AppColorsStyles.defaultPadding.h),
+      padding: EdgeInsets.only(bottom: AppConstantes.defaultPadding.h),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CircleAvatar(
             radius: 20.r,
             backgroundImage: const AssetImage('assets/avatar_placeholder.png'),
-            backgroundColor: Theme.of(context).cardTheme.color, // Updated to use theme
+            backgroundColor: Theme.of(
+              context,
+            ).cardTheme.color, // Updated to use theme
           ),
-          SizedBox(width: AppColorsStyles.defaultPadding.w),
+          SizedBox(width: AppConstantes.defaultPadding.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,7 +76,8 @@ class BuildStudentTile extends StatelessWidget {
                 ),
                 SizedBox(height: 4.h),
                 TextApp(
-                  text: 'Score: ${student['score']}, Grade: ${student['grade']}',
+                  text:
+                      'Score: ${student['score']}, Grade: ${student['grade']}',
                   style: AppTextStyles.caption12(context),
                 ),
               ],

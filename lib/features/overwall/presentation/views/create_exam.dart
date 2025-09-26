@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:graduation/constantes.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
 import 'package:graduation/core/extensions/context_extension.dart';
 import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
-import 'package:graduation/core/styles/styles.dart';
 import 'package:graduation/features/overwall/presentation/widgets/add_quation.dart';
 import 'package:graduation/features/overwall/presentation/widgets/custom_app_bar_for_exams.dart';
 import 'package:graduation/features/overwall/presentation/widgets/input_field.dart';
@@ -37,11 +37,14 @@ class _CreateExamScreenState extends State<CreateExamScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBarForExams(text: context.translate(LangKeys.createExam), icon: Icons.close),
+      appBar: CustomAppBarForExams(
+        text: context.translate(LangKeys.createExam),
+        icon: Icons.close,
+      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(
-          horizontal: AppColorsStyles.defaultPadding.w,
-          vertical: AppColorsStyles.defaultPadding.h / 2,
+          horizontal: AppConstantes.defaultPadding.w,
+          vertical: AppConstantes.defaultPadding.h / 2,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,13 +85,19 @@ class _CreateExamScreenState extends State<CreateExamScreen> {
             ),
             SizedBox(height: 12.h),
             if (multipleChoiceQuestions.isEmpty)
-              BuildAddQuestionButton(onTap: () {
-                setState(() {
-                  multipleChoiceQuestions.add({context.translate(LangKeys.question): '', context.translate(LangKeys.option1): []});
-                });
-              }),
-            ...multipleChoiceQuestions
-                .map((q) => BuildQuestionTile(question: q, isMultipleChoice: true)),
+              BuildAddQuestionButton(
+                onTap: () {
+                  setState(() {
+                    multipleChoiceQuestions.add({
+                      context.translate(LangKeys.question): '',
+                      context.translate(LangKeys.option1): [],
+                    });
+                  });
+                },
+              ),
+            ...multipleChoiceQuestions.map(
+              (q) => BuildQuestionTile(question: q, isMultipleChoice: true),
+            ),
             SizedBox(height: 20.h),
             TextApp(
               text: context.translate(LangKeys.essay),
@@ -96,26 +105,32 @@ class _CreateExamScreenState extends State<CreateExamScreen> {
             ),
             SizedBox(height: 12.h),
             if (essayQuestions.isEmpty)
-              BuildAddQuestionButton(onTap: () {
-                setState(() {
-                  essayQuestions.add({context.translate(LangKeys.question): ''});
-                });
-              }),
-            ...essayQuestions
-                .map((q) => BuildQuestionTile(question: q, isMultipleChoice: false)),
+              BuildAddQuestionButton(
+                onTap: () {
+                  setState(() {
+                    essayQuestions.add({
+                      context.translate(LangKeys.question): '',
+                    });
+                  });
+                },
+              ),
+            ...essayQuestions.map(
+              (q) => BuildQuestionTile(question: q, isMultipleChoice: false),
+            ),
             SizedBox(height: 20.h),
             Center(
               child: ElevatedButton(
                 onPressed: () {
                   print(
-                      'Exam Created - Title: ${_titleController.text}, Subject: ${_subjectController.text}, Level: ${_levelController.text}, Duration: ${_durationController.text}');
+                    'Exam Created - Title: ${_titleController.text}, Subject: ${_subjectController.text}, Level: ${_levelController.text}, Duration: ${_durationController.text}',
+                  );
                 },
                 style: Theme.of(context).elevatedButtonTheme.style,
                 child: TextApp(
                   text: context.translate(LangKeys.createExam),
-                  style: AppTextStyles.body16(context).copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: AppTextStyles.body16(
+                    context,
+                  ).copyWith(fontWeight: FontWeight.bold),
                 ),
               ),
             ),

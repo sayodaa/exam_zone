@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:graduation/constantes.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
-import 'package:graduation/core/styles/styles.dart';
 
 class AppTextField extends StatelessWidget {
   const AppTextField({
@@ -57,7 +57,7 @@ class AppTextField extends StatelessWidget {
             Theme.of(context).inputDecorationTheme.border ??
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(
-                AppColorsStyles.defaultBorderRadius.r,
+                AppConstantes.defaultBorderRadius.r,
               ),
               borderSide: BorderSide.none,
             ),
@@ -65,7 +65,7 @@ class AppTextField extends StatelessWidget {
             Theme.of(context).inputDecorationTheme.enabledBorder ??
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(
-                AppColorsStyles.defaultBorderRadius.r,
+                AppConstantes.defaultBorderRadius.r,
               ),
               borderSide: BorderSide.none,
             ),
@@ -73,7 +73,7 @@ class AppTextField extends StatelessWidget {
             Theme.of(context).inputDecorationTheme.focusedBorder ??
             OutlineInputBorder(
               borderRadius: BorderRadius.circular(
-                AppColorsStyles.defaultBorderRadius.r,
+                AppConstantes.defaultBorderRadius.r,
               ),
               borderSide: BorderSide.none,
             ),

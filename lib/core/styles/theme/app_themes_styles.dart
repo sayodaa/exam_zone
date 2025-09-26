@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation/constantes.dart';
 import 'package:graduation/core/styles/styles.dart';
 
 class AppThemes {
@@ -16,18 +17,20 @@ class AppThemes {
         backgroundColor: AppColorsStyles.light.secondaryColor,
         foregroundColor: AppColorsStyles.light.surfaceColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppColorsStyles.defaultBorderRadius),
+          borderRadius: BorderRadius.circular(
+            AppConstantes.defaultBorderRadius,
+          ),
         ),
         padding: EdgeInsets.symmetric(
-          horizontal: AppColorsStyles.defaultPadding,
-          vertical: AppColorsStyles.defaultPadding / 2,
+          horizontal: AppConstantes.defaultPadding,
+          vertical: AppConstantes.defaultPadding / 2,
         ),
       ),
     ),
     cardTheme: CardThemeData(
       color: AppColorsStyles.light.containerBackgroundColor,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppColorsStyles.defaultBorderRadius),
+        borderRadius: BorderRadius.circular(AppConstantes.defaultBorderRadius),
       ),
     ),
     textTheme: TextTheme(
@@ -61,18 +64,20 @@ class AppThemes {
         backgroundColor: AppColorsStyles.dark.secondaryColor,
         foregroundColor: AppColorsStyles.dark.surfaceColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppColorsStyles.defaultBorderRadius),
+          borderRadius: BorderRadius.circular(
+            AppConstantes.defaultBorderRadius,
+          ),
         ),
         padding: EdgeInsets.symmetric(
-          horizontal: AppColorsStyles.defaultPadding,
-          vertical: AppColorsStyles.defaultPadding / 2,
+          horizontal: AppConstantes.defaultPadding,
+          vertical: AppConstantes.defaultPadding / 2,
         ),
       ),
     ),
     cardTheme: CardThemeData(
       color: AppColorsStyles.dark.containerBackgroundColor,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppColorsStyles.defaultBorderRadius),
+        borderRadius: BorderRadius.circular(AppConstantes.defaultBorderRadius),
       ),
     ),
     textTheme: TextTheme(

@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:graduation/constantes.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
 import 'package:graduation/core/extensions/context_extension.dart';
 import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
-import 'package:graduation/core/styles/styles.dart';
 import 'package:graduation/features/essayAI/data/essay_model.dart';
 import 'package:graduation/features/overwall/presentation/widgets/custom_app_bar_for_exams.dart';
 import 'package:graduation/features/overwall/presentation/widgets/input_field.dart';
@@ -48,8 +48,8 @@ class _EssayAiViewState extends State<EssayAiView> {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: AppColorsStyles.defaultPadding.w,
-          vertical: AppColorsStyles.defaultPadding.h,
+          horizontal: AppConstantes.defaultPadding.w,
+          vertical: AppConstantes.defaultPadding.h,
         ),
         child: Form(
           key: _formKey,
@@ -79,7 +79,8 @@ class _EssayAiViewState extends State<EssayAiView> {
                       if (value == null || value.isEmpty) {
                         return 'من فضلك أدخل عدد الأسئلة';
                       }
-                      if (int.tryParse(value) == null || int.parse(value) <= 0) {
+                      if (int.tryParse(value) == null ||
+                          int.parse(value) <= 0) {
                         return 'أدخل عددًا صحيحًا أكبر من 0';
                       }
                       return null;
@@ -104,14 +105,15 @@ class _EssayAiViewState extends State<EssayAiView> {
                           )
                         : TextApp(
                             text: context.translate(LangKeys.generateExam),
-                            style: AppTextStyles.semiBold16(context).copyWith(
-                              color: Colors.white,
-                            ),
+                            style: AppTextStyles.semiBold16(
+                              context,
+                            ).copyWith(color: Colors.white),
                           ),
                   ),
                 ),
                 if (_generatedQuestions.isNotEmpty &&
-                    _answerControllers.length == _generatedQuestions.length) ...[
+                    _answerControllers.length ==
+                        _generatedQuestions.length) ...[
                   SizedBox(height: 24.h),
                   TextApp(
                     text: 'الأسئلة المُنشأة:',
@@ -131,11 +133,14 @@ class _EssayAiViewState extends State<EssayAiView> {
                             ListTile(
                               leading: CircleAvatar(
                                 radius: 16.r,
-                                backgroundColor: Theme.of(context).colorScheme.primary,
+                                backgroundColor: Theme.of(
+                                  context,
+                                ).colorScheme.primary,
                                 child: TextApp(
                                   text: '${index + 1}',
-                                  style: AppTextStyles.body14(context)
-                                      .copyWith(color: Colors.white),
+                                  style: AppTextStyles.body14(
+                                    context,
+                                  ).copyWith(color: Colors.white),
                                 ),
                               ),
                               title: TextApp(
@@ -149,15 +154,15 @@ class _EssayAiViewState extends State<EssayAiView> {
                               maxLines: 5,
                               validator: (value) =>
                                   value == null || value.isEmpty
-                                      ? 'أدخل إجابة السؤال ${index + 1}'
-                                      : null,
+                                  ? 'أدخل إجابة السؤال ${index + 1}'
+                                  : null,
                               label: 'إجابة السؤال ${index + 1}',
                             ),
                           ],
                         ),
                       ),
                     );
-                  }).toList(),
+                  }),
                   SizedBox(height: 24.h),
                   // زر تصحيح الإجابات
                   Center(
@@ -176,8 +181,9 @@ class _EssayAiViewState extends State<EssayAiView> {
                             )
                           : TextApp(
                               text: 'صحح إجاباتي',
-                              style: AppTextStyles.semiBold16(context)
-                                  .copyWith(color: Colors.white),
+                              style: AppTextStyles.semiBold16(
+                                context,
+                              ).copyWith(color: Colors.white),
                             ),
                     ),
                   ),
@@ -190,53 +196,60 @@ class _EssayAiViewState extends State<EssayAiView> {
                   ),
                   SizedBox(height: 12.h),
                   // عرض نتائج التصحيح لكل سؤال
-                  ..._corrections.asMap().entries.where((entry) => entry.value != null).map((entry) {
-                    final index = entry.key;
-                    final correction = entry.value!;
-                    return Padding(
-                      padding: EdgeInsets.only(bottom: 12.h),
-                      child: _buildCard(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            TextApp(
-                              text: 'السؤال ${index + 1}: ${_generatedQuestions[index]}',
-                              style: AppTextStyles.semiBold16(context),
+                  ..._corrections
+                      .asMap()
+                      .entries
+                      .where((entry) => entry.value != null)
+                      .map((entry) {
+                        final index = entry.key;
+                        final correction = entry.value!;
+                        return Padding(
+                          padding: EdgeInsets.only(bottom: 12.h),
+                          child: _buildCard(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                TextApp(
+                                  text:
+                                      'السؤال ${index + 1}: ${_generatedQuestions[index]}',
+                                  style: AppTextStyles.semiBold16(context),
+                                ),
+                                SizedBox(height: 8.h),
+                                TextApp(
+                                  text: 'الدرجة: ${correction.score}/10',
+                                  style: AppTextStyles.bold18(context).copyWith(
+                                    color: Theme.of(
+                                      context,
+                                    ).colorScheme.primary,
+                                  ),
+                                ),
+                                SizedBox(height: 12.h),
+                                TextApp(
+                                  text: 'الأخطاء:',
+                                  style: AppTextStyles.semiBold16(context),
+                                ),
+                                SizedBox(height: 8.h),
+                                TextApp(
+                                  text: correction.mistakes.isEmpty
+                                      ? 'لا توجد أخطاء'
+                                      : correction.mistakes,
+                                  style: AppTextStyles.body14(context),
+                                ),
+                                SizedBox(height: 12.h),
+                                TextApp(
+                                  text: 'الملاحظات:',
+                                  style: AppTextStyles.semiBold16(context),
+                                ),
+                                SizedBox(height: 8.h),
+                                TextApp(
+                                  text: correction.feedback,
+                                  style: AppTextStyles.body14(context),
+                                ),
+                              ],
                             ),
-                            SizedBox(height: 8.h),
-                            TextApp(
-                              text: 'الدرجة: ${correction.score}/10',
-                              style: AppTextStyles.bold18(context).copyWith(
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                            ),
-                            SizedBox(height: 12.h),
-                            TextApp(
-                              text: 'الأخطاء:',
-                              style: AppTextStyles.semiBold16(context),
-                            ),
-                            SizedBox(height: 8.h),
-                            TextApp(
-                              text: correction.mistakes.isEmpty
-                                  ? 'لا توجد أخطاء'
-                                  : correction.mistakes,
-                              style: AppTextStyles.body14(context),
-                            ),
-                            SizedBox(height: 12.h),
-                            TextApp(
-                              text: 'الملاحظات:',
-                              style: AppTextStyles.semiBold16(context),
-                            ),
-                            SizedBox(height: 8.h),
-                            TextApp(
-                              text: correction.feedback,
-                              style: AppTextStyles.body14(context),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }).toList(),
+                          ),
+                        );
+                      }),
                 ],
                 SizedBox(height: 24.h),
               ],
@@ -251,18 +264,16 @@ class _EssayAiViewState extends State<EssayAiView> {
   Widget _buildCard({required Widget child}) {
     return Card(
       elevation: 4,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.r),
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(16.w),
-        child: child,
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
+      child: Padding(padding: EdgeInsets.all(16.w), child: child),
     );
   }
 
   // تصميم زر احترافي
-  Widget _buildButton({required VoidCallback? onPressed, required Widget child}) {
+  Widget _buildButton({
+    required VoidCallback? onPressed,
+    required Widget child,
+  }) {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
@@ -287,7 +298,8 @@ class _EssayAiViewState extends State<EssayAiView> {
       });
 
       try {
-        final prompt = '''
+        final prompt =
+            '''
 أنشئ ${_questionsController.text} أسئلة مقالية عن "${_topicController.text}".
 يجب أن تكون الأسئلة مفتوحة، تحفز على التفكير، وذات طابع أكاديمي.
 أرجع الأسئلة فقط في قائمة مرقمة بدون أي شرح إضافي.
@@ -314,9 +326,9 @@ class _EssayAiViewState extends State<EssayAiView> {
           _answerControllers = [];
           _corrections = [];
         });
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('خطأ أثناء إنشاء الأسئلة: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('خطأ أثناء إنشاء الأسئلة: $e')));
       } finally {
         setState(() {
           _isGenerating = false;
@@ -332,12 +344,16 @@ class _EssayAiViewState extends State<EssayAiView> {
       });
 
       try {
-        List<EssayCorrectionModel?> newCorrections = List.filled(_generatedQuestions.length, null);
+        List<EssayCorrectionModel?> newCorrections = List.filled(
+          _generatedQuestions.length,
+          null,
+        );
         for (int i = 0; i < _generatedQuestions.length; i++) {
           final question = _generatedQuestions[i];
           final answer = _answerControllers[i].text.trim();
           if (answer.isNotEmpty) {
-            final prompt = '''
+            final prompt =
+                '''
 أنت مدرس. صحح إجابة الطالب التالية بناءً على السؤال المقالي التالي.
 السؤال: $question
 أعط درجة من 10، وحدد أي أخطاء في القواعد/الإملاء/المحتوى، وقدم ملاحظات بناءة.
@@ -360,9 +376,9 @@ $answer
           _corrections = newCorrections;
         });
       } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('خطأ أثناء تصحيح الإجابات: $e')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('خطأ أثناء تصحيح الإجابات: $e')));
       } finally {
         setState(() {
           _isCorrecting = false;
@@ -374,7 +390,9 @@ $answer
   Future<String> _callAI(String prompt) async {
     const String apiKey = 'sk-02e178544f904b9696c835285265f303';
     const String model = "deepseek-chat";
-    final Uri apiUrl = Uri.parse("https://api.deepseek.com/v1/chat/completions");
+    final Uri apiUrl = Uri.parse(
+      "https://api.deepseek.com/v1/chat/completions",
+    );
 
     try {
       final response = await http.post(

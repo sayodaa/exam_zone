@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:graduation/constantes.dart';
 import 'package:graduation/core/extensions/context_extension.dart';
 import 'package:graduation/core/language/lang_keys.dart';
-import 'package:graduation/core/styles/styles.dart';
 import 'package:graduation/features/auth/presentation/views/widgets/auth_button.dart';
 import 'package:graduation/features/auth/presentation/views/widgets/email_feild.dart';
 import 'package:graduation/features/auth/presentation/views/widgets/forget_password.dart';
@@ -45,9 +45,9 @@ class _LoginFormState extends State<LoginForm> {
       child: Column(
         children: [
           EmailField(controller: _emailCtrl),
-          SizedBox(height: AppColorsStyles.defaultPadding.h),
+          SizedBox(height: AppConstantes.defaultPadding.h),
           PasswordField(controller: _passwordCtrl),
-          SizedBox(height: AppColorsStyles.defaultPadding.h * 0.625),
+          SizedBox(height: AppConstantes.defaultPadding.h * 0.625),
           Align(
             alignment: Alignment.centerRight,
             child: ForgotPasswordButton(
@@ -55,7 +55,7 @@ class _LoginFormState extends State<LoginForm> {
               label: context.translate(LangKeys.forgotPassword),
             ),
           ),
-          SizedBox(height: AppColorsStyles.defaultPadding.h * 0.625),
+          SizedBox(height: AppConstantes.defaultPadding.h * 0.625),
           AuthButton(
             text: context.translate(LangKeys.login),
             onPressed: _submit,

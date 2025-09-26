@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:graduation/constantes.dart';
 import 'package:graduation/core/common/pdf.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
 import 'package:graduation/core/extensions/context_extension.dart';
 import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
-import 'package:graduation/core/styles/styles.dart';
 import 'package:graduation/features/generate_choise/data/models/quation_model.dart';
 import 'package:graduation/features/overwall/presentation/widgets/build_question_card.dart';
 import 'package:graduation/features/overwall/presentation/widgets/essay_quation_card.dart';
@@ -129,8 +129,8 @@ class _ExamScreenState extends State<ExamScreen> {
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(
-          horizontal: AppColorsStyles.defaultPadding.w,
-          vertical: AppColorsStyles.defaultPadding.h / 2,
+          horizontal: AppConstantes.defaultPadding.w,
+          vertical: AppConstantes.defaultPadding.h / 2,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

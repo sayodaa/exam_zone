@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:graduation/constantes.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
 import 'package:graduation/core/extensions/context_extension.dart';
 import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
-import 'package:graduation/core/styles/styles.dart';
 
 class SocialAuthButton extends StatelessWidget {
   const SocialAuthButton({super.key, this.onPressed, required this.icon});
@@ -22,7 +22,7 @@ class SocialAuthButton extends StatelessWidget {
               shape: WidgetStateProperty.all(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(
-                    AppColorsStyles.defaultBorderRadius.r,
+                    AppConstantes.defaultBorderRadius.r,
                   ),
                 ),
               ),
@@ -32,7 +32,7 @@ class SocialAuthButton extends StatelessWidget {
               foregroundColor: Theme.of(context).textTheme.bodyLarge?.color,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(
-                  AppColorsStyles.defaultBorderRadius.r,
+                  AppConstantes.defaultBorderRadius.r,
                 ),
               ),
             ),

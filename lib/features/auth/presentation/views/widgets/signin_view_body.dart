@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:graduation/constantes.dart';
 import 'package:graduation/core/common/widgets/custom_app_bar.dart';
 import 'package:graduation/core/extensions/context_extension.dart';
 import 'package:graduation/core/language/lang_keys.dart';
-import 'package:graduation/core/styles/styles.dart';
 import 'package:graduation/features/auth/presentation/views/widgets/dont_have_an_account.dart';
 import 'package:graduation/features/auth/presentation/views/widgets/signin_form.dart';
 import 'package:graduation/features/auth/presentation/views/widgets/signin_section_title.dart';
@@ -19,30 +19,30 @@ class LoginBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: AppColorsStyles.defaultPadding.w,
+          horizontal: AppConstantes.defaultPadding.w,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: AppColorsStyles.defaultPadding.h * 3.75),
+            SizedBox(height: AppConstantes.defaultPadding.h * 3.75),
             CustomAppBar(text: context.translate(LangKeys.appName)),
-            SizedBox(height: AppColorsStyles.defaultPadding.h * 2.5),
+            SizedBox(height: AppConstantes.defaultPadding.h * 2.5),
             SectionTitle(text: context.translate(LangKeys.welcomeBack)),
-            SizedBox(height: AppColorsStyles.defaultPadding.h * 1.875),
+            SizedBox(height: AppConstantes.defaultPadding.h * 1.875),
             LoginForm(
               onSubmit: ({required String email, required String password}) {
                 context.read<SigninCubit>().signin(email, password);
               },
             ),
-            SizedBox(height: AppColorsStyles.defaultPadding.h * 1.25),
+            SizedBox(height: AppConstantes.defaultPadding.h * 1.25),
             SocialAuthSection(
               onGoogle: () {
                 context.read<SigninCubit>().signinWithGoogle();
               },
             ),
-            SizedBox(height: AppColorsStyles.defaultPadding.h),
+            SizedBox(height: AppConstantes.defaultPadding.h),
             const DontHaveAnAccount(),
-            SizedBox(height: AppColorsStyles.defaultPadding.h * 1.25),
+            SizedBox(height: AppConstantes.defaultPadding.h * 1.25),
           ],
         ),
       ),

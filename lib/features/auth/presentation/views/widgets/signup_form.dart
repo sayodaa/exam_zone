@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:graduation/constantes.dart';
 import 'package:graduation/core/extensions/context_extension.dart';
 import 'package:graduation/core/language/lang_keys.dart';
-import 'package:graduation/core/styles/styles.dart';
 import 'package:graduation/features/auth/presentation/views/widgets/auth_button.dart';
 import 'package:graduation/features/auth/presentation/views/widgets/confirm_password_feild.dart';
 import 'package:graduation/features/auth/presentation/views/widgets/email_feild.dart';
@@ -56,16 +56,16 @@ class _SignupFormState extends State<SignupForm> {
       child: Column(
         children: [
           NameField(controller: _nameCtrl),
-          SizedBox(height: AppColorsStyles.defaultPadding.h),
+          SizedBox(height: AppConstantes.defaultPadding.h),
           EmailField(controller: _emailCtrl),
-          SizedBox(height: AppColorsStyles.defaultPadding.h),
+          SizedBox(height: AppConstantes.defaultPadding.h),
           PasswordField(controller: _passwordCtrl),
-          SizedBox(height: AppColorsStyles.defaultPadding.h),
+          SizedBox(height: AppConstantes.defaultPadding.h),
           ConfirmPasswordField(
             controller: _confirmCtrl,
             passwordController: _passwordCtrl,
           ),
-          SizedBox(height: AppColorsStyles.defaultPadding.h * 1.25),
+          SizedBox(height: AppConstantes.defaultPadding.h * 1.25),
           AuthButton(
             text: context.translate(LangKeys.signUp),
             onPressed: _submit,
