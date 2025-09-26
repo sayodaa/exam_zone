@@ -8,16 +8,16 @@ import 'package:graduation/features/auth/presentation/views/widgets/email_feild.
 import 'package:graduation/features/auth/presentation/views/widgets/forget_password.dart';
 import 'package:graduation/features/auth/presentation/views/widgets/password_feild.dart';
 
-class LoginForm extends StatefulWidget {
-  const LoginForm({super.key, this.onSubmit});
+class SigninForm extends StatefulWidget {
+  const SigninForm({super.key, this.onSubmit});
   final void Function({required String email, required String password})?
   onSubmit;
 
   @override
-  State<LoginForm> createState() => _LoginFormState();
+  State<SigninForm> createState() => _SigninFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _SigninFormState extends State<SigninForm> {
   final _formKey = GlobalKey<FormState>();
   final _emailCtrl = TextEditingController();
   final _passwordCtrl = TextEditingController();

@@ -49,9 +49,9 @@ class AppRoutes {
       case editProfile:
         return BaseRoute(page: const ProfileScreen());
       case login:
-        return BaseRoute(page: LoginScreen());
+        return BaseRoute(page: SigninView());
       case signUp:
-        return BaseRoute(page: SignupScreen());
+        return BaseRoute(page: SignupView());
 
       case home:
         return BaseRoute(page: const HomeScreen());

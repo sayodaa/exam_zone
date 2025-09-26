@@ -11,8 +11,8 @@ import 'package:graduation/features/auth/presentation/views/widgets/social%20aut
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation/features/auth/presentation/managers/signin_cubit/signin_cubit.dart';
 
-class LoginBody extends StatelessWidget {
-  const LoginBody({super.key});
+class SigninViewBody extends StatelessWidget {
+  const SigninViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class LoginBody extends StatelessWidget {
             SizedBox(height: AppConstantes.defaultPadding.h * 2.5),
             SectionTitle(text: context.translate(LangKeys.welcomeBack)),
             SizedBox(height: AppConstantes.defaultPadding.h * 1.875),
-            LoginForm(
+            SigninForm(
               onSubmit: ({required String email, required String password}) {
                 context.read<SigninCubit>().signin(email, password);
               },

@@ -8,8 +8,8 @@ import 'package:graduation/features/auth/presentation/views/widgets/have_an_acco
 import 'package:graduation/features/auth/presentation/views/widgets/signin_section_title.dart';
 import 'package:graduation/features/auth/presentation/views/widgets/signup_form.dart';
 
-class SignupBody extends StatelessWidget {
-  const SignupBody({super.key, this.onSubmit});
+class SignupViewBody extends StatelessWidget {
+  const SignupViewBody({super.key, this.onSubmit});
 
   final void Function({
     required String name,
