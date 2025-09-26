@@ -56,7 +56,7 @@ class AppRoutes {
       case home:
         return BaseRoute(page: const HomeScreen());
       case settingsView:
-        return BaseRoute(page: const SettingsScreen());
+        return BaseRoute(page: const SettingsView());
       case overWall:
         return BaseRoute(page: const ExamResultsScreen());
       case examResultsStudentsScreen:
@@ -67,14 +67,10 @@ class AppRoutes {
             generatedQuestions: settings.arguments as List<QuestionModel>?,
           ),
         );
-        case generateQuestion:
-        return BaseRoute(
-          page: GenerateExamScreen(),
-        );
-        case essayAi:
-        return BaseRoute(
-          page: const EssayAiView(),
-        );
+      case generateQuestion:
+        return BaseRoute(page: GenerateExamScreen());
+      case essayAi:
+        return BaseRoute(page: const EssayAiView());
       case createExam:
         return BaseRoute(page: const CreateExamScreen());
       default:

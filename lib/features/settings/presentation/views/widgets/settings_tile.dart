@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:graduation/core/common/widgets/text_app.dart';// Import LangKeys
+import 'package:graduation/core/common/widgets/text_app.dart'; // Import LangKeys
 import 'package:graduation/core/styles/app_text_styles.dart';
-
 
 class SettingsTile extends StatelessWidget {
   const SettingsTile({
@@ -35,10 +34,7 @@ class SettingsTile extends StatelessWidget {
             color: Theme.of(context).textTheme.bodyMedium?.color,
             size: 24.sp,
           ),
-          title: TextApp(
-            text: title,
-            style: AppTextStyles.medium16(context),
-          ),
+          title: TextApp(text: title, style: AppTextStyles.medium16(context)),
           subtitle: TextApp(
             text: subtitle,
             style: AppTextStyles.caption12Light(context),
@@ -46,10 +42,7 @@ class SettingsTile extends StatelessWidget {
             overflow: TextOverflow.ellipsis,
           ),
           trailing: trailing,
-          contentPadding: EdgeInsets.symmetric(
-            horizontal: 12.w,
-            vertical: 8.h,
-          ),
+          contentPadding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
         ),
       ),
     );

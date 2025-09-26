@@ -5,7 +5,7 @@ import 'package:graduation/core/routes/app_routes.dart';
 import 'package:graduation/core/services/shared_pref/pref_keys.dart';
 import 'package:graduation/core/services/shared_pref/shared_pref.dart';
 import 'package:graduation/core/styles/theme/app_themes_styles.dart';
-import 'package:graduation/core/styles/theme/theme_provider.dart';
+import 'package:graduation/features/settings/presentation/manager/theme_provider/theme_provider.dart';
 import 'package:graduation/core/utils/app_string.dart';
 import 'package:provider/provider.dart';
 
@@ -14,8 +14,10 @@ class ExamZone extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  ChangeNotifierProvider(create: (_) => ThemeProvider(),
-    child: const ExamZoneApp());
+    return ChangeNotifierProvider(
+      create: (_) => ThemeProvider(),
+      child: const ExamZoneApp(),
+    );
   }
 }
 

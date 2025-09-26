@@ -29,7 +29,7 @@ class _MainViewState extends State<MainView>
   final List<Widget> _screens = const [
     HomeScreen(),
     ProfileScreen(),
-    SettingsScreen(),
+    SettingsView(),
   ];
 
   final List<_NavBarItemData> _navItems = [
