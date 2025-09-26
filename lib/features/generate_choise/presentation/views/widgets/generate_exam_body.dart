@@ -9,10 +9,10 @@ import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
 import 'package:graduation/features/generate_choise/presentation/cubit/generate_cubit_exam.dart';
 import 'package:graduation/features/generate_choise/presentation/cubit/generate_state_exam.dart';
-import 'package:graduation/features/generate_choise/presentation/widgets/generate_exam_button.dart';
-import 'package:graduation/features/generate_choise/presentation/widgets/input_for_generate_exam.dart';
-import 'package:graduation/features/generate_choise/presentation/widgets/linear_progrees_indecator.dart';
-import 'package:graduation/features/generate_choise/presentation/widgets/slider_difficalty.dart';
+import 'package:graduation/features/generate_choise/presentation/views/widgets/generate_exam_button.dart';
+import 'package:graduation/features/generate_choise/presentation/views/widgets/input_for_generate_exam.dart';
+import 'package:graduation/features/generate_choise/presentation/views/widgets/linear_progrees_indecator.dart';
+import 'package:graduation/features/generate_choise/presentation/views/widgets/slider_difficalty.dart';
 
 class GenerateExamBody extends StatelessWidget {
   const GenerateExamBody({super.key, required this.cubit, required this.state});

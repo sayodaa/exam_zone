@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:graduation/core/errors/failures.dart';
 import 'package:graduation/features/generate_choise/data/models/quation_model.dart';
-import 'package:graduation/features/generate_choise/data/services/generate_quations_servise.dart';
+import 'package:graduation/core/services/generated_choises_services/generate_choise_quations_servise.dart';
 import 'package:graduation/features/generate_choise/domain/repo/exam_choise_repo.dart';
 
 class ExamChoiseRepoImpl extends ExamChoiseRepo {

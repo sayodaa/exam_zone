@@ -5,7 +5,7 @@ import 'package:graduation/core/enums/generate_choise_state_enum.dart';
 import 'package:graduation/core/routes/app_routes.dart';
 import 'package:graduation/features/generate_choise/presentation/cubit/generate_cubit_exam.dart';
 import 'package:graduation/features/generate_choise/presentation/cubit/generate_state_exam.dart';
-import 'package:graduation/features/generate_choise/presentation/refactors/generate_exam_body.dart';
+import 'package:graduation/features/generate_choise/presentation/views/widgets/generate_exam_body.dart';
 
 class GenerateExamConsumer extends StatelessWidget {
   const GenerateExamConsumer({super.key});
@@ -22,7 +22,7 @@ class GenerateExamConsumer extends StatelessWidget {
         }
       },
       builder: (BuildContext context, state) {
-        return GenerateExamBody(cubit: cubit, state: state,);
+        return GenerateExamBody(cubit: cubit, state: state);
       },
     );
   }
