@@ -44,7 +44,11 @@ class _SigninFormState extends State<SigninForm> {
       key: _formKey,
       child: Column(
         children: [
-          EmailField(controller: _emailCtrl),
+          TextFormFeild(
+            controller: _emailCtrl,
+            labelText: context.translate(LangKeys.email),
+            keyboardType: TextInputType.emailAddress,
+          ),
           SizedBox(height: AppConstantes.defaultPadding.h),
           PasswordField(controller: _passwordCtrl),
           SizedBox(height: AppConstantes.defaultPadding.h * 0.625),
