@@ -90,4 +90,14 @@ class FirebaseAuthService {
 
     return (await FirebaseAuth.instance.signInWithCredential(credential)).user!;
   }
+
+  Future<void> signOut() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+    } on FirebaseAuthException catch (e) {
+      throw CustomException(message: e.message ?? 'فشل تسجيل الخروج');
+    } catch (e) {
+      throw CustomException(message: 'حدث خطأ غير متوقع أثناء تسجيل الخروج');
+    }
+  }
 }

@@ -76,25 +76,28 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
               ),
               SizedBox(height: 16.h),
-              ListTile(
-                contentPadding: EdgeInsets.symmetric(
-                  vertical: 8.h,
-                  horizontal: 20.w,
-                ),
-                leading: Icon(
-                  Icons.exit_to_app,
-                  size: 24.sp,
-                  color: Colors.white,
-                ),
-                title: Text(
-                  'Logout',
-                  style: TextStyle(
-                    fontSize: 15.sp,
-                    fontWeight: FontWeight.w500,
+              GestureDetector(
+                onTap: () {},
+                child: ListTile(
+                  contentPadding: EdgeInsets.symmetric(
+                    vertical: 8.h,
+                    horizontal: 20.w,
+                  ),
+                  leading: Icon(
+                    Icons.exit_to_app,
+                    size: 24.sp,
                     color: Colors.white,
                   ),
+                  title: Text(
+                    'Logout',
+                    style: TextStyle(
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                    ),
+                  ),
+                  onTap: _logout,
                 ),
-                onTap: _logout,
               ),
               const Spacer(),
               Padding(

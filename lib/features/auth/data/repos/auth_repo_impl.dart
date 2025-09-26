@@ -66,4 +66,17 @@ class AuthRepoImpl extends AuthRepo {
       return left(ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
     }
   }
+
+  @override
+  Future<Either<Failure, Unit>> signOut() async {
+    try {
+      await firebaseAuthService.signOut();
+      return right(unit);
+    } on CustomException catch (e) {
+      return left(ServerFailure(e.message));
+    } catch (e) {
+      log('Exception in AuthRepoImpl.signOut: ${e.toString()}');
+      return left(ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
+    }
+  }
 }
