@@ -4,7 +4,7 @@ import 'package:graduation/constantes.dart';
 import 'package:graduation/core/extensions/context_extension.dart';
 import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/features/auth/presentation/views/widgets/auth_button.dart';
-import 'package:graduation/features/auth/presentation/views/widgets/email_feild.dart';
+import 'package:graduation/features/auth/presentation/views/widgets/custom_text_form_feild.dart';
 import 'package:graduation/features/auth/presentation/views/widgets/forget_password.dart';
 import 'package:graduation/features/auth/presentation/views/widgets/password_feild.dart';
 
@@ -44,7 +44,7 @@ class _SigninFormState extends State<SigninForm> {
       key: _formKey,
       child: Column(
         children: [
-          TextFormFeild(
+          CustomTextFormFeild(
             controller: _emailCtrl,
             labelText: context.translate(LangKeys.email),
             keyboardType: TextInputType.emailAddress,

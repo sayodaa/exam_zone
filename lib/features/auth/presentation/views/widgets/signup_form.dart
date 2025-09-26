@@ -5,7 +5,7 @@ import 'package:graduation/core/extensions/context_extension.dart';
 import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/features/auth/presentation/views/widgets/auth_button.dart';
 import 'package:graduation/features/auth/presentation/views/widgets/confirm_password_feild.dart';
-import 'package:graduation/features/auth/presentation/views/widgets/email_feild.dart';
+import 'package:graduation/features/auth/presentation/views/widgets/custom_text_form_feild.dart';
 import 'package:graduation/features/auth/presentation/views/widgets/password_feild.dart';
 
 class SignupForm extends StatefulWidget {
@@ -54,13 +54,13 @@ class _SignupFormState extends State<SignupForm> {
       key: _formKey,
       child: Column(
         children: [
-          TextFormFeild(
+          CustomTextFormFeild(
             controller: _nameCtrl,
             labelText: context.translate(LangKeys.name),
-            keyboardType: TextInputType.emailAddress,
+            keyboardType: TextInputType.name,
           ),
           SizedBox(height: AppConstantes.defaultPadding.h),
-          TextFormFeild(
+          CustomTextFormFeild(
             controller: _emailCtrl,
             labelText: context.translate(LangKeys.email),
             keyboardType: TextInputType.emailAddress,
