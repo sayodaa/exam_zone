@@ -26,11 +26,7 @@ class _MainViewState extends State<MainView>
   // Generate unique keys for each screen to force rebuild
   final List<GlobalKey> _screenKeys = [GlobalKey(), GlobalKey(), GlobalKey()];
 
-  final List<Widget> _screens = const [
-    HomeScreen(),
-    ProfileScreen(),
-    SettingsView(),
-  ];
+  final List<Widget> _screens = [HomeScreen(), ProfileScreen(), SettingsView()];
 
   final List<_NavBarItemData> _navItems = [
     _NavBarItemData(

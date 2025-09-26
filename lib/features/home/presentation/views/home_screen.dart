@@ -8,18 +8,23 @@ import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/routes/app_routes.dart';
 import 'package:graduation/core/styles/app_images.dart';
 import 'package:graduation/features/home/presentation/views/widgets/build_option_card.dart';
+import 'package:graduation/features/home/presentation/views/widgets/custom_drower.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: const CustomDrawer(),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: AppConstantes.defaultPadding.w,
-            vertical: AppConstantes.defaultPadding.h * 0.5, // Approx 8.h
+            vertical: AppConstantes.defaultPadding.h * 0.5,
           ),
           child: OrientationBuilder(
             builder: (context, orientation) {
@@ -28,13 +33,15 @@ class HomeScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomAppBar(
+                      onTap: () {
+                        _scaffoldKey.currentState?.openDrawer();
+                      },
+                      isVisable: true,
                       text: AppLocalizations.of(
                         context,
                       )!.translate(LangKeys.appName)!,
                     ),
-                    SizedBox(
-                      height: AppConstantes.defaultPadding.h * 2,
-                    ), // Approx 12.h
+                    SizedBox(height: AppConstantes.defaultPadding.h * 2),
                     LayoutBuilder(
                       builder: (context, constraints) {
                         return GridView.count(
@@ -44,11 +51,9 @@ class HomeScreen extends StatelessWidget {
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           mainAxisSpacing:
-                              AppConstantes.defaultPadding.h *
-                              0.75, // Approx 12.h
+                              AppConstantes.defaultPadding.h * 0.75,
                           crossAxisSpacing:
-                              AppConstantes.defaultPadding.w *
-                              0.75, // Approx 12.w
+                              AppConstantes.defaultPadding.w * 0.75,
                           childAspectRatio: orientation == Orientation.portrait
                               ? 3.5
                               : 2.5,
@@ -62,8 +67,7 @@ class HomeScreen extends StatelessWidget {
                                 subtitle: AppLocalizations.of(
                                   context,
                                 )!.translate(LangKeys.createAiExamSubtitle),
-                                imagePath:
-                                    AppImages.logo, // Suggest unique image
+                                imagePath: AppImages.logo,
                                 onTap: () {
                                   Navigator.pushNamed(
                                     context,
@@ -81,8 +85,7 @@ class HomeScreen extends StatelessWidget {
                                 subtitle: AppLocalizations.of(
                                   context,
                                 )!.translate(LangKeys.createAiExamSubtitle),
-                                imagePath:
-                                    AppImages.logo, // Suggest unique image
+                                imagePath: AppImages.logo,
                                 onTap: () {
                                   Navigator.pushNamed(
                                     context,
@@ -100,8 +103,7 @@ class HomeScreen extends StatelessWidget {
                                 subtitle: AppLocalizations.of(
                                   context,
                                 )!.translate(LangKeys.createManualExamSubtitle),
-                                imagePath:
-                                    AppImages.logo, // Suggest unique image
+                                imagePath: AppImages.logo,
                                 onTap: () {
                                   Navigator.pushNamed(
                                     context,
@@ -119,8 +121,7 @@ class HomeScreen extends StatelessWidget {
                                 subtitle: AppLocalizations.of(
                                   context,
                                 )!.translate(LangKeys.myExamsSubtitle),
-                                imagePath:
-                                    AppImages.logo, // Suggest unique image
+                                imagePath: AppImages.logo,
                                 onTap: () {
                                   Navigator.pushNamed(
                                     context,
@@ -138,8 +139,7 @@ class HomeScreen extends StatelessWidget {
                                 subtitle: AppLocalizations.of(
                                   context,
                                 )!.translate(LangKeys.exportAnalytics),
-                                imagePath:
-                                    AppImages.logo, // Suggest unique image
+                                imagePath: AppImages.logo,
                                 onTap: () {
                                   Navigator.pushNamed(
                                     context,

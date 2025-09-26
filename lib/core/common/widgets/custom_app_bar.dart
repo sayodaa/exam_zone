@@ -9,10 +9,13 @@ class CustomAppBar extends StatelessWidget {
     super.key,
     required this.text,
     this.icon = Icons.help_outline,
+    this.isVisable = false,
+    this.onTap,
   });
-
+  final bool isVisable;
   final String text;
   final IconData icon;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +24,13 @@ class CustomAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          Visibility(
+            visible: isVisable,
+            child: GestureDetector(
+              onTap: onTap,
+              child: Icon(Icons.list, size: 32.sp),
+            ),
+          ),
           TextApp(text: text, style: AppTextStyles.bold24(context)),
 
           Icon(

@@ -54,7 +54,7 @@ class AppRoutes {
         return BaseRoute(page: SignupView());
 
       case home:
-        return BaseRoute(page: const HomeScreen());
+        return BaseRoute(page: HomeScreen());
       case settingsView:
         return BaseRoute(page: const SettingsView());
       case overWall:
