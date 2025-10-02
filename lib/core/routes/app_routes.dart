@@ -20,7 +20,7 @@ import 'package:graduation/features/settings/presentation/views/settings_screen.
 import 'package:graduation/features/splash/presentation/views/splash_view.dart';
 
 class AppRoutes {
-  static const String login = '/login';
+  static const String signIn = '/signIn';
   static const String signUp = '/signUp';
   static const String onBoarding = '/onBoarding';
   static const String splash = '/splash';
@@ -50,7 +50,7 @@ class AppRoutes {
         return BaseRoute(page: const ProfileScreen());
       case editProfile:
         return BaseRoute(page: const ProfileScreen());
-      case login:
+      case signIn:
         return BaseRoute(page: SigninView());
       case signUp:
         return BaseRoute(page: SignupView());

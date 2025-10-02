@@ -33,7 +33,7 @@ class _OnBoardingViewsBodyState extends State<OnBoardingViewsBody> {
   void submit() async {
     await SharedPref().setBoolean(PrefKeys.onBoarding, true).then((_) {
       if (mounted) {
-        context.pushNamedAndRemoveUntil(AppRoutes.login);
+        context.pushNamedAndRemoveUntil(AppRoutes.signIn);
       }
     });
   }
