@@ -23,15 +23,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -66,4 +60,25 @@ class DefaultFirebaseOptions {
     projectId: 'examen-zone',
     storageBucket: 'examen-zone.firebasestorage.app',
   );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyAY7WRCK--gxF8Mq6eNqNidzywJJIqRH1A',
+    appId: '1:192861883439:ios:bcb0a021f2f1dd6a418ada',
+    messagingSenderId: '192861883439',
+    projectId: 'examen-zone',
+    storageBucket: 'examen-zone.firebasestorage.app',
+    iosClientId: '192861883439-lrm0c76j93uf6qg8b4sben3r6g0mb345.apps.googleusercontent.com',
+    iosBundleId: 'com.example.graduation',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyAY7WRCK--gxF8Mq6eNqNidzywJJIqRH1A',
+    appId: '1:192861883439:ios:18fccb25752c871f418ada',
+    messagingSenderId: '192861883439',
+    projectId: 'examen-zone',
+    storageBucket: 'examen-zone.firebasestorage.app',
+    iosClientId: '192861883439-s2iik8dejeftlocf5hm7c7mkbqqqbbd1.apps.googleusercontent.com',
+    iosBundleId: 'com.examble.graduation',
+  );
+
 }
