@@ -63,7 +63,8 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         password: password,
       );
-      return right(UserModel.fromFirebaseUser(user));
+      var userEntity = await getUserData(uid: user.uid);
+      return right(userEntity);
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e) {
@@ -94,6 +95,7 @@ class AuthRepoImpl extends AuthRepo {
     databaseServices.addData(
       path: BackendEndpoints.addUserData,
       data: user.toMap(),
+      documentId: user.uId,
     );
     return Future.value(unit);
   }
@@ -109,5 +111,14 @@ class AuthRepoImpl extends AuthRepo {
       log('Exception in AuthRepoImpl.signOut: ${e.toString()}');
       return left(ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
     }
+  }
+
+  @override
+  Future<UserEntity> getUserData({required String uid}) async {
+    var userData = await databaseServices.getData(
+      path: BackendEndpoints.getUserData,
+      documentId: uid,
+    );
+    return UserModel.fromJson(userData);
   }
 }
