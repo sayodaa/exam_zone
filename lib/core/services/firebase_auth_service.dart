@@ -1,9 +1,14 @@
-import 'dart:developer';
+import 'dart:developer' as dev;
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:google_sign_in/google_sign_in.dart'
+    show GoogleSignInAccount, GoogleSignIn, GoogleSignInAuthentication;
 import 'package:graduation/core/errors/exceptions.dart';
 
 class FirebaseAuthService {
+  Future deleteUser() async {
+    await FirebaseAuth.instance.currentUser!.delete();
+  }
+
   Future<User> createUserWithEmailAndPassword({
     required String email,
     required String password,
@@ -13,7 +18,7 @@ class FirebaseAuthService {
           .createUserWithEmailAndPassword(email: email, password: password);
       return credential.user!;
     } on FirebaseAuthException catch (e) {
-      log(
+      dev.log(
         'Exception in FirebaseAuthService.CreateUserWithEmailAndPassword: ${e.message} and code is ${e.code}',
       );
       if (e.code == 'weak-password') {
@@ -49,7 +54,7 @@ class FirebaseAuthService {
       );
       return credential.user!;
     } on FirebaseAuthException catch (e) {
-      log(
+      dev.log(
         'Exception in FirebaseAuthService.signInWithEmailAndPassword: ${e.toString()}',
       );
       if (e.code == 'user-not-found') {
@@ -57,6 +62,10 @@ class FirebaseAuthService {
           message: 'الرقم السري او البريد الالكتروني غير صحيح.',
         );
       } else if (e.code == 'wrong-password') {
+        throw CustomException(
+          message: 'الرقم السري او البريد الالكتروني غير صحيح.',
+        );
+      } else if (e.code == 'invalid-credential') {
         throw CustomException(
           message: 'الرقم السري او البريد الالكتروني غير صحيح.',
         );
@@ -68,7 +77,7 @@ class FirebaseAuthService {
         );
       }
     } catch (e) {
-      log(
+      dev.log(
         'Exception in FirebaseAuthService.signInWithEmailAndPassword: ${e.toString()}',
       );
     }

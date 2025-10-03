@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:graduation/core/errors/exceptions.dart';
 import 'package:graduation/core/errors/failures.dart';
 import 'package:graduation/core/services/data_service.dart';
@@ -25,8 +26,9 @@ class AuthRepoImpl extends AuthRepo {
     String password,
     String name,
   ) async {
+    User? user;
     try {
-      final user = await firebaseAuthService.createUserWithEmailAndPassword(
+      user = await firebaseAuthService.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -34,8 +36,14 @@ class AuthRepoImpl extends AuthRepo {
       await addUserData(user: userEntity);
       return right(userEntity);
     } on CustomException catch (e) {
+      if (user != null) {
+        await firebaseAuthService.deleteUser();
+      }
       return left(ServerFailure(e.message));
     } catch (e) {
+      if (user != null) {
+        await firebaseAuthService.deleteUser();
+      }
       log(
         'Exception in AuthRepoImpl.CreateUserWithEmailAndPassword: ${e.toString()}',
       );
@@ -49,7 +57,7 @@ class AuthRepoImpl extends AuthRepo {
     String password,
   ) async {
     try {
-      final user = await firebaseAuthService.signInWithEmailAndPassword(
+      var user = await firebaseAuthService.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -67,7 +75,7 @@ class AuthRepoImpl extends AuthRepo {
   @override
   Future<Either<Failure, UserEntity>> signInWithGoogle() async {
     try {
-      final user = await firebaseAuthService.signInWithGoogle();
+      var user = await firebaseAuthService.signInWithGoogle();
       return right(UserModel.fromFirebaseUser(user));
     } catch (e) {
       log('Exception in AuthRepoImpl.signInWithGoogle: ${e.toString()}');
