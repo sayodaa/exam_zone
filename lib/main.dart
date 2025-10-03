@@ -13,7 +13,7 @@ void main() async {
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  await initServiceLocator();
+  setupGetIt();
 
   await SharedPref().instantiatePreferences();
   SharedPref().clearPreferences();

@@ -3,15 +3,21 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:graduation/core/errors/exceptions.dart';
 import 'package:graduation/core/errors/failures.dart';
+import 'package:graduation/core/services/data_service.dart';
 import 'package:graduation/core/services/firebase_auth_service.dart';
+import 'package:graduation/core/utils/backend_end_points.dart';
 import 'package:graduation/features/auth/data/model/user_model.dart';
 import 'package:graduation/features/auth/domain/entites/user_entity.dart';
 import 'package:graduation/features/auth/domain/repos/auth_repos.dart';
 
 class AuthRepoImpl extends AuthRepo {
   final FirebaseAuthService firebaseAuthService;
+  final DatabaseServices databaseServices;
 
-  AuthRepoImpl({required this.firebaseAuthService});
+  AuthRepoImpl({
+    required this.firebaseAuthService,
+    required this.databaseServices,
+  });
 
   @override
   Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
@@ -24,7 +30,9 @@ class AuthRepoImpl extends AuthRepo {
         email: email,
         password: password,
       );
-      return right(UserModel.fromFirebaseUser(user));
+      var userEntity = UserModel.fromFirebaseUser(user);
+      await addUserData(user: userEntity);
+      return right(userEntity);
     } on CustomException catch (e) {
       return left(ServerFailure(e.message));
     } catch (e) {
@@ -68,6 +76,15 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
+  Future addUserData({required UserEntity user}) {
+    databaseServices.addData(
+      path: BackendEndpoints.addUserData,
+      data: user.toMap(),
+    );
+    return Future.value(unit);
+  }
+
+  @override
   Future<Either<Failure, Unit>> signOut() async {
     try {
       await firebaseAuthService.signOut();
@@ -78,11 +95,5 @@ class AuthRepoImpl extends AuthRepo {
       log('Exception in AuthRepoImpl.signOut: ${e.toString()}');
       return left(ServerFailure('حدث خطأ ما. الرجاء المحاولة مرة اخرى.'));
     }
-  }
-
-  @override
-  Future addUserData({required UserEntity user}) {
-    // TODO: implement addUserData
-    throw UnimplementedError();
   }
 }

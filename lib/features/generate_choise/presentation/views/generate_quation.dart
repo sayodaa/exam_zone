@@ -10,7 +10,7 @@ import 'package:graduation/features/overwall/presentation/widgets/custom_app_bar
 
 class GenerateExamScreen extends StatelessWidget {
   GenerateExamScreen({super.key});
-  final examChoiseRepo = sl<ExamChoiseRepo>();
+  final examChoiseRepo = getIt<ExamChoiseRepo>();
 
   @override
   Widget build(BuildContext context) {
