@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation/constantes.dart';
 import 'package:graduation/core/common/animations/animate_do.dart';
@@ -6,7 +7,11 @@ import 'package:graduation/core/common/widgets/custom_app_bar.dart';
 import 'package:graduation/core/language/app_localizations.dart';
 import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/routes/app_routes.dart';
+import 'package:graduation/core/services/singelton.dart';
 import 'package:graduation/core/styles/app_images.dart';
+import 'package:graduation/features/auth/domain/repos/auth_repos.dart';
+import 'package:graduation/features/auth/presentation/managers/logout_cubit/logout_cubit.dart'
+    show LogoutCubit;
 import 'package:graduation/features/home/presentation/views/widgets/build_option_card.dart';
 import 'package:graduation/features/home/presentation/views/widgets/custom_drower.dart';
 
@@ -19,7 +24,11 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: const CustomDrawer(),
+      drawer: BlocProvider(
+        create: (context) => LogoutCubit(getIt<AuthRepo>()),
+        child: CustomDrawer(),
+      ),
+
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
