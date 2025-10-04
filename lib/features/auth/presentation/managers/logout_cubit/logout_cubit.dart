@@ -10,6 +10,7 @@ class LogoutCubit extends Cubit<LogoutState> {
 
   Future<void> signOut() async {
     emit(LogoutLoading());
+    await Future.delayed(const Duration(milliseconds: 300));
     final result = await authRepo.signOut();
     result.fold(
       (failure) => emit(LogoutFailure(message: failure.message)),
