@@ -2,30 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomDrawer extends StatefulWidget {
+class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
-
-  @override
-  State<CustomDrawer> createState() => _CustomDrawerState();
-}
-
-class _CustomDrawerState extends State<CustomDrawer> {
-  bool _isLoading = false;
-
-  void _logout() async {
-    setState(() {
-      _isLoading = true;
-    });
-
-    await Future.delayed(const Duration(seconds: 2));
-
-    if (mounted) {
-      setState(() {
-        _isLoading = false;
-      });
-      Navigator.pop(context);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +16,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
         children: [
           Column(
             children: [
+              // Header
               Container(
                 height: 120.h,
                 decoration: BoxDecoration(
@@ -76,28 +55,26 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
               ),
               SizedBox(height: 16.h),
-              GestureDetector(
-                onTap: () {},
-                child: ListTile(
-                  contentPadding: EdgeInsets.symmetric(
-                    vertical: 8.h,
-                    horizontal: 20.w,
-                  ),
-                  leading: Icon(
-                    Icons.exit_to_app,
-                    size: 24.sp,
+              // Logout
+              ListTile(
+                contentPadding: EdgeInsets.symmetric(
+                  vertical: 8.h,
+                  horizontal: 20.w,
+                ),
+                leading: Icon(
+                  Icons.exit_to_app,
+                  size: 24.sp,
+                  color: Colors.white,
+                ),
+                title: Text(
+                  'Logout',
+                  style: TextStyle(
+                    fontSize: 15.sp,
+                    fontWeight: FontWeight.w500,
                     color: Colors.white,
                   ),
-                  title: Text(
-                    'Logout',
-                    style: TextStyle(
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white,
-                    ),
-                  ),
-                  onTap: _logout,
                 ),
+                onTap: () {},
               ),
               const Spacer(),
               Padding(
@@ -112,35 +89,6 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ),
             ],
           ),
-          if (_isLoading)
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.black.withValues(alpha: .5),
-                borderRadius: const BorderRadius.horizontal(
-                  right: Radius.circular(20),
-                ),
-              ),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const CircularProgressIndicator(
-                      color: Colors.white,
-                      strokeWidth: 3,
-                    ),
-                    SizedBox(height: 16.h),
-                    Text(
-                      'Log out',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
         ],
       ),
     );
