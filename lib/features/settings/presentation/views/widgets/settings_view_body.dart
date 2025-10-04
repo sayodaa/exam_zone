@@ -31,22 +31,22 @@ class SettingsViewBody extends StatelessWidget {
             SizedBox(height: 8.h),
 
             // Notifications
-            // CustomFadeInLeft(
-            //   duration: 300,
-            //   child: SettingsTile(
-            //     icon: Icons.notifications,
-            //     title:
-            //         AppLocalizations.of(
-            //           context,
-            //         )?.translate(LangKeys.notifications) ??
-            //         '',
-            //     subtitle:
-            //         AppLocalizations.of(
-            //           context,
-            //         )?.translate(LangKeys.manageNotifications) ??
-            //         '',
-            //   ),
-            // ),
+            CustomFadeInLeft(
+              duration: 300,
+              child: SettingsTile(
+                icon: Icons.notifications,
+                title:
+                    AppLocalizations.of(
+                      context,
+                    )?.translate(LangKeys.notifications) ??
+                    '',
+                subtitle:
+                    AppLocalizations.of(
+                      context,
+                    )?.translate(LangKeys.manageNotifications) ??
+                    '',
+              ),
+            ),
 
             // Theme
             CustomFadeInUp(

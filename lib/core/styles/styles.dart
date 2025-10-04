@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
 abstract class AppColorsStyles {
-  static const _LightColors light = _LightColors();
-  static const _DarkColors dark = _DarkColors();
+  static const LightColors light = LightColors();
+  static const DarkColors dark = DarkColors();
+
+  static const double defaultPadding = 16.0;
+  static const double defaultBorderRadius = 8.0;
 }
 
-class _LightColors {
-  const _LightColors();
+class LightColors {
+  const LightColors();
 
   final Color primaryColor = const Color(0xFF0D47A1); // Keep: Vibrant dark blue
   final Color secondaryColor = const Color(
@@ -56,8 +59,8 @@ class _LightColors {
   ); // Darker slate blue (was 0xFF757575)
 }
 
-class _DarkColors {
-  const _DarkColors();
+class DarkColors {
+  const DarkColors();
 
   final Color primaryColor = const Color(0xFF0D47A1); // أزرق غامق مميز
   final Color secondaryColor = const Color(0xFF1976D2); // أزرق متوسط

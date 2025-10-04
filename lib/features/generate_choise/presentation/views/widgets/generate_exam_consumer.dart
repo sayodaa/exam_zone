@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:graduation/core/common/toast/show_toast.dart';
-import 'package:graduation/core/enums/generate_choise_state_enum.dart';
 import 'package:graduation/core/routes/app_routes.dart';
 import 'package:graduation/features/generate_choise/presentation/cubit/generate_cubit_exam.dart';
 import 'package:graduation/features/generate_choise/presentation/cubit/generate_state_exam.dart';
@@ -15,9 +14,9 @@ class GenerateExamConsumer extends StatelessWidget {
     final GenerateExamCubit cubit = context.watch<GenerateExamCubit>();
     return BlocConsumer<GenerateExamCubit, GenerateExamState>(
       listener: (context, state) {
-        if (state.stateEnum == GenerateChoiseStateEnum.success) {
+        if (state is GenerateExamSuccess) {
           _successState(cubit, context, state);
-        } else if (state.stateEnum == GenerateChoiseStateEnum.failure) {
+        } else if (state is GenerateExamFailure) {
           ShowToast.showToastErrorTop(message: state.error!);
         }
       },

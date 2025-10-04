@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
-import 'package:graduation/core/enums/generate_choise_state_enum.dart';
 import 'package:graduation/core/extensions/context_extension.dart';
 import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
@@ -31,7 +30,7 @@ class GenerateExamButton extends StatelessWidget {
         },
 
         style: Theme.of(context).elevatedButtonTheme.style,
-        child: state.stateEnum == GenerateChoiseStateEnum.generatingInProgress
+        child: state.isGenerating
             ? SizedBox(
                 width: 24,
                 height: 24,

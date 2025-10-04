@@ -1,10 +1,10 @@
 class OnboardingItemModel {
-  final String image;
+  final String video;
   final String title;
   final String description;
 
   OnboardingItemModel({
-    required this.image,
+    required this.video,
     required this.title,
     required this.description,
   });

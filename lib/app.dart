@@ -5,8 +5,8 @@ import 'package:graduation/core/routes/app_routes.dart';
 import 'package:graduation/core/services/shared_pref/pref_keys.dart';
 import 'package:graduation/core/services/shared_pref/shared_pref.dart';
 import 'package:graduation/core/styles/theme/app_themes_styles.dart';
-import 'package:graduation/features/settings/presentation/manager/theme_provider/theme_provider.dart';
 import 'package:graduation/core/utils/app_string.dart';
+import 'package:graduation/features/settings/presentation/manager/theme_provider/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 class ExamZone extends StatelessWidget {
@@ -33,7 +33,7 @@ class ExamZoneApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        bool? onboard = SharedPref().getBoolean(PrefKeys.onBoarding);
+        //! bool? onboard = SharedPref().getBoolean(PrefKeys.onBoarding);
         AppString.uId = SharedPref().getString(PrefKeys.uId);
         return GestureDetector(
           onTap: () {

@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation/constantes.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
-import 'package:graduation/core/enums/generate_choise_state_enum.dart';
+// ...existing code...
 import 'package:graduation/core/extensions/context_extension.dart';
 import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
@@ -33,25 +33,12 @@ class GenerateExamBody extends StatelessWidget {
             children: [
               InputForGenerateExam(cubit: cubit),
               SizedBox(height: 40.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextApp(
-                    text: context.translate(LangKeys.difficultyLevel),
-                    style: AppTextStyles.medium16(context),
-                  ),
-                  TextApp(
-                    text: difficultyLabel(context) ?? '',
-                    style: AppTextStyles.semiBold16(context),
-                  ),
-                ],
-              ),
+              SliderDifficalty(),
               SliderDifficalty(),
               SizedBox(height: 30.h),
               GenerateExamButton(cubit: cubit, state: state),
               SizedBox(height: 40.h),
-              if (state.stateEnum ==
-                  GenerateChoiseStateEnum.generatingInProgress) ...[
+        if (state.isGenerating) ...[
                 TextApp(
                   text: (context).translate(LangKeys.generatingExam),
                   style: AppTextStyles.body14(context),

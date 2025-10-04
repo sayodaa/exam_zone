@@ -1,5 +1,5 @@
 import 'package:graduation/core/language/lang_keys.dart';
-import 'package:graduation/features/generate_choise/domain/entitys/question_entity.dart';
+import 'package:graduation/features/generate_choise/domain/entities/question_entity.dart';
 
 class QuestionModel extends QuestionEntity{
   QuestionModel({

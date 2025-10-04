@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,12 +21,12 @@ class _LinearProgressIndicatorForGenerateExamState
   void initState() {
     super.initState();
 
-    timer = Timer.periodic(const Duration(seconds: 1), (t) {
+    timer = Timer.periodic(const Duration(milliseconds: 800), (t) {
       if (progress >= 1) {
         t.cancel();
       } else {
         setState(() {
-          progress += 0.05; // زود 5% كل 200ms
+          progress += 0.05; // زود 5% كل 800ms
         });
       }
     });
@@ -41,11 +42,6 @@ class _LinearProgressIndicatorForGenerateExamState
   Widget build(BuildContext context) {
     return LinearProgressIndicator(
       value: progress,
-      backgroundColor:
-          Theme.of(context).progressIndicatorTheme.linearTrackColor,
-      valueColor: AlwaysStoppedAnimation<Color>(
-        Theme.of(context).progressIndicatorTheme.color!,
-      ),
       minHeight: 6.h,
     );
   }

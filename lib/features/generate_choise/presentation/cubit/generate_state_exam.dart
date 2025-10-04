@@ -1,30 +1,53 @@
-import 'package:graduation/core/enums/generate_choise_state_enum.dart';
 import 'package:graduation/features/generate_choise/data/models/quation_model.dart';
 
+/// Base state for generate exam
 class GenerateExamState {
-  List<QuestionModel> questionModels;
-  String? error;
-  double? difficultyValue;
-  GenerateChoiseStateEnum? stateEnum;
+  final List<QuestionModel> questionModels;
+  final String? error;
+  final double difficultyValue;
+  final bool isGenerating;
+  final double generatingProgress;
 
-  GenerateExamState({
-    this.error,
+  const GenerateExamState({
     this.questionModels = const [],
-    this.difficultyValue,
-    this.stateEnum,
+    this.error,
+    this.difficultyValue = 0.0,
+    this.isGenerating = false,
+    this.generatingProgress = 0.0,
   });
 
   GenerateExamState copyWith({
     List<QuestionModel>? questionModels,
-    GenerateChoiseStateEnum? stateEnum,
-    double? difficultyValue,
     String? error,
+    double? difficultyValue,
+    bool? isGenerating,
+    double? generatingProgress,
   }) {
     return GenerateExamState(
       questionModels: questionModels ?? this.questionModels,
       error: error ?? this.error,
       difficultyValue: difficultyValue ?? this.difficultyValue,
-      stateEnum: stateEnum ?? this.stateEnum,
+      isGenerating: isGenerating ?? this.isGenerating,
+      generatingProgress: generatingProgress ?? this.generatingProgress,
     );
   }
+}
+
+class GenerateExamInitial extends GenerateExamState {
+  const GenerateExamInitial() : super();
+}
+
+class GeneratingExamInProgress extends GenerateExamState {
+  const GeneratingExamInProgress(double progress)
+      : super(isGenerating: true, generatingProgress: progress);
+}
+
+class GenerateExamSuccess extends GenerateExamState {
+  const GenerateExamSuccess(List<QuestionModel> questions)
+      : super(questionModels: questions, isGenerating: false, generatingProgress: 0.0);
+}
+
+class GenerateExamFailure extends GenerateExamState {
+  const GenerateExamFailure(String error)
+      : super(error: error, isGenerating: false, generatingProgress: 0.0);
 }

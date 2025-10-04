@@ -6,13 +6,20 @@ class EssayCorrectionModel {
   EssayCorrectionModel({
     required this.score,
     required this.mistakes,
+
     required this.feedback,
   });
 
   factory EssayCorrectionModel.fromRawText(String raw) {
     final scoreReg = RegExp(r'Score\s*[:\-]?\s*(\d{1,2})');
-    final mistakesReg = RegExp(r'(Mistakes|Errors|Issues)\s*[:\-]?\s*(.*?)\n\n', dotAll: true);
-    final feedbackReg = RegExp(r'(Feedback|Comment|Advice)\s*[:\-]?\s*(.*)', dotAll: true);
+    final mistakesReg = RegExp(
+      r'(Mistakes|Errors|Issues)\s*[:\-]?\s*(.*?)\n\n',
+      dotAll: true,
+    );
+    final feedbackReg = RegExp(
+      r'(Feedback|Comment|Advice)\s*[:\-]?\s*(.*)',
+      dotAll: true,
+    );
 
     final scoreMatch = scoreReg.firstMatch(raw);
     final mistakesMatch = mistakesReg.firstMatch(raw);
