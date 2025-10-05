@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:graduation/features/essayAI/data/essay_model.dart';
+import 'package:graduation/features/essayAI/data/models/essay_model.dart';
 import 'package:graduation/features/essayAI/domain/entities/essay_correction.dart';
 import 'package:http/http.dart' as http;
 
@@ -71,24 +71,24 @@ class EssayRemoteDataSourceImpl implements EssayRemoteDataSource {
     required String answer,
   }) async {
     final prompt =
-        '''
-أنت مدرس محترف. صحح إجابة الطالب التالية بناءً على السؤال المقالي.
+      '''
+  You are a professional teacher. Correct the student's answer based on the essay question.
 
-السؤال: $question
+  Question: $question
 
-إجابة الطالب:
-$answer
+  Student's Answer:
+  $answer
 
-قدم تقييماً شاملاً يتضمن:
-1. الدرجة: من 10
-2. الأخطاء: (قواعد، إملاء، محتوى)
-3. الملاحظات: ملاحظات بناءة ومفصلة
+  Provide a comprehensive evaluation including:
+  1. Score: out of 10
+  2. Mistakes: (grammar, spelling, content)
+  3. Feedback: constructive and detailed notes
 
-قم بتنسيق الرد بالضبط كالتالي:
-الدرجة: X
-الأخطاء: [اذكر الأخطاء أو اكتب "لا توجد أخطاء"]
-الملاحظات: [ملاحظاتك التفصيلية]
-''';
+  Format your response exactly as follows:
+  Score: X
+  Mistakes: [list mistakes or write "No mistakes"]
+  Feedback: [your detailed feedback]
+  ''';
 
     final result = await _callAI(prompt);
 

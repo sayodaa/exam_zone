@@ -34,7 +34,6 @@ class GenerateExamBody extends StatelessWidget {
               InputForGenerateExam(cubit: cubit),
               SizedBox(height: 40.h),
               SliderDifficalty(),
-              SliderDifficalty(),
               SizedBox(height: 30.h),
               GenerateExamButton(cubit: cubit, state: state),
               SizedBox(height: 40.h),

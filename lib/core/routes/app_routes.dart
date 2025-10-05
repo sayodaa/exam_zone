@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/core/common/under_build_screen.dart';
 import 'package:graduation/core/routes/base_routes.dart';
+import 'package:graduation/features/auth/presentation/views/signin_view.dart';
+import 'package:graduation/features/auth/presentation/views/signup_view.dart';
 import 'package:graduation/features/essayAI/presentation/views/essay_ai_view.dart';
+import 'package:graduation/features/generate_choise/data/models/quation_model.dart';
 import 'package:graduation/features/generate_choise/presentation/views/generate_quation.dart';
 import 'package:graduation/features/home/presentation/views/home_screen.dart';
 import 'package:graduation/features/home/presentation/views/main_view.dart';
 import 'package:graduation/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:graduation/features/overwall/presentation/views/create_exam.dart';
 import 'package:graduation/features/overwall/presentation/views/exam_result2.dart';
+import 'package:graduation/features/overwall/presentation/views/exam_screen.dart';
 import 'package:graduation/features/overwall/presentation/views/overwall_screen.dart';
+import 'package:graduation/features/profile/presentation/views/profile_view.dart';
 import 'package:graduation/features/settings/presentation/views/settings_screen.dart';
 import 'package:graduation/features/splash/presentation/views/splash_view.dart';
 
@@ -39,14 +44,14 @@ class AppRoutes {
         return BaseRoute(page: const SplashView());
       case mainV:
         return BaseRoute(page: const MainView());
-      // case profile:
-      //   return BaseRoute(page: const ProfileScreen());
+      case profile:
+        return BaseRoute(page: const ProfileView());
       // case editProfile:
       //   return BaseRoute(page: const ProfileScreen());
-      // case login:
-      //   return BaseRoute(page: LoginScreen());
-      // case signUp:
-      //   return BaseRoute(page: SignupScreen());
+      case signIn:
+        return BaseRoute(page: SigninView());
+      case signUp:
+        return BaseRoute(page: SignupView());
 
       case home:
         return BaseRoute(page: HomeScreen());
@@ -57,11 +62,11 @@ class AppRoutes {
       case examResultsStudentsScreen:
         return BaseRoute(page: const ExamResultsStudentsScreen());
       case examScreen:
-        // return BaseRoute(
-        //   page: ExamScreen(
-        //     generatedQuestions: settings.arguments as List<QuestionModel>?,
-        //   ),
-        // );
+        return BaseRoute(
+          page: ExamScreen(
+            generatedQuestions: settings.arguments as List<QuestionModel>?,
+          ),
+        );
         case generateQuestion:
         return BaseRoute(
           page: GenerateExamScreen(),

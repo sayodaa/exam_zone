@@ -7,6 +7,8 @@ import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
 import 'package:graduation/core/styles/styles.dart';
 import 'package:graduation/features/home/presentation/views/home_screen.dart';
+import 'package:graduation/features/profile/presentation/views/profile_view.dart';
+import 'package:graduation/features/settings/presentation/views/settings_screen.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
@@ -26,6 +28,8 @@ class _MainViewState extends State<MainView>
 
   final List<Widget> _screens = [
     HomeScreen(),
+    ProfileView(),
+    SettingsView(),
   ];
 
   final List<_NavBarItemData> _navItems = [

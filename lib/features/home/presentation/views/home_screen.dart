@@ -7,7 +7,7 @@ import 'package:graduation/core/common/widgets/custom_app_bar.dart';
 import 'package:graduation/core/language/app_localizations.dart';
 import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/core/routes/app_routes.dart';
-import 'package:graduation/core/services/singelton.dart';
+import 'package:graduation/core/services/service_locator.dart';
 import 'package:graduation/core/styles/app_images.dart';
 import 'package:graduation/features/auth/domain/repos/auth_repos.dart';
 import 'package:graduation/features/auth/presentation/managers/logout_cubit/logout_cubit.dart'
@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       key: _scaffoldKey,
       drawer: BlocProvider(
-        create: (context) => LogoutCubit(getIt<AuthRepo>()),
+        create: (context) => LogoutCubit(sl<AuthRepo>()),
         child: CustomDrawer(),
       ),
 

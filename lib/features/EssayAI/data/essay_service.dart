@@ -1,5 +1,6 @@
 import 'dart:convert';
-import 'package:graduation/features/essayAI/data/essay_model.dart';
+
+import 'package:graduation/features/essayAI/data/models/essay_model.dart';
 import 'package:http/http.dart' as http;
 
 class EssayService {
