@@ -17,17 +17,17 @@ class OnBoardingPageView extends StatelessWidget {
 
   List<OnboardingItemModel> get onboardingDark => [
     OnboardingItemModel(
-      video: AppImages.onBoard1Dark,
+      image: AppImages.onBoard1,
       title: LangKeys.onboardTitle1,
       description: LangKeys.onboardBody1,
     ),
     OnboardingItemModel(
-      video: AppImages.onBoard2Dark,
+      image: AppImages.onBoard2,
       title: LangKeys.onboardTitle2,
       description: LangKeys.onboardBody2,
     ),
     OnboardingItemModel(
-      video: AppImages.onBoard3Dark,
+      image: AppImages.onBoard3,
       title: LangKeys.onboardTitle3,
       description: LangKeys.onboardBody3,
     ),
@@ -45,7 +45,7 @@ class OnBoardingPageView extends StatelessWidget {
       itemBuilder: (context, index) {
         final item = onboardingDark[index];
         return PageViewItem(
-          video: item.video,
+          image: item.image,
           title: context.translate(item.title),
           subtitle: context.translate(item.description),
         );

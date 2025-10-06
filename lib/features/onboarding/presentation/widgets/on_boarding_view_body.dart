@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:graduation/core/styles/styles.dart';
 import 'package:graduation/features/onboarding/presentation/widgets/onboarding_page_view.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:graduation/core/extensions/context_extension.dart';
@@ -62,9 +61,9 @@ class _OnBoardingViewsBodyState extends State<OnBoardingViewsBody> {
               curve: Curves.bounceInOut,
             );
           },
-          effect: JumpingDotEffect(
-            dotColor: AppColorsStyles.dark.secondaryTextColor,
-            activeDotColor: AppColorsStyles.light.surfaceColor,
+          effect: const JumpingDotEffect(
+            dotColor: Colors.grey,
+            activeDotColor: Colors.blue,
             dotHeight: 10,
             dotWidth: 10,
             spacing: 10,

@@ -103,42 +103,6 @@ class HomeScreen extends StatelessWidget {
                                 },
                               ),
                             ),
-                            CustomFadeInRight(
-                              duration: 400,
-                              child: BuildOptionCard(
-                                title: AppLocalizations.of(
-                                  context,
-                                )!.translate(LangKeys.createManualExam),
-                                subtitle: AppLocalizations.of(
-                                  context,
-                                )!.translate(LangKeys.createManualExamSubtitle),
-                                imagePath: AppImages.logo,
-                                onTap: () {
-                                  Navigator.pushNamed(
-                                    context,
-                                    AppRoutes.createExam,
-                                  );
-                                },
-                              ),
-                            ),
-                            CustomFadeInUp(
-                              duration: 300,
-                              child: BuildOptionCard(
-                                title: AppLocalizations.of(
-                                  context,
-                                )!.translate(LangKeys.examTitle),
-                                subtitle: AppLocalizations.of(
-                                  context,
-                                )!.translate(LangKeys.myExamsSubtitle),
-                                imagePath: AppImages.logo,
-                                onTap: () {
-                                  Navigator.pushNamed(
-                                    context,
-                                    AppRoutes.examResultsStudentsScreen,
-                                  );
-                                },
-                              ),
-                            ),
                             CustomFadeInLeft(
                               duration: 400,
                               child: BuildOptionCard(

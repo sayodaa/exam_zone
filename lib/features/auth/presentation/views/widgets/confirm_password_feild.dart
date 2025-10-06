@@ -41,7 +41,7 @@ class _ConfirmPasswordFieldState extends State<ConfirmPasswordField> {
           return null;
         },
         obscureText: _obscure,
-        suffixIcon: _obscure ? Icons.visibility_off : Icons.visibility,
+        suffixIcon: _obscure ? Icons.visibility : Icons.visibility_off,
         suffixIconPressed: _toggle,
       ),
     );
