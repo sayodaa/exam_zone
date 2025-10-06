@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/core/common/widgets/text_app.dart';
+import 'package:graduation/core/styles/app_images.dart';
 import 'package:graduation/core/styles/app_text_styles.dart';
 import 'package:lottie/lottie.dart';
 
@@ -30,7 +31,19 @@ class PageViewItem extends StatelessWidget {
             SizedBox(
               height: 250,
               width: 250,
-              child: Lottie.asset(video)
+              child:
+                  (video.toLowerCase().endsWith('.json') ||
+                      video.toLowerCase().endsWith('.lottie'))
+                  ? Lottie.asset(
+                      video,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Image.asset(
+                          AppImages.examZone,
+                          fit: BoxFit.contain,
+                        );
+                      },
+                    )
+                  : Image.asset(video, fit: BoxFit.contain),
             ),
             const SizedBox(height: 30),
             TextApp(

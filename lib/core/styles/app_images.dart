@@ -1,11 +1,11 @@
 abstract class AppImages {
   //Onboarding images
-  static const onBoard1Dark = 'assets/lotties/Ai-powered-marketing.JSON';
-  static const onBoard2Dark = 'assets/lotties/Ai-powered-marketing.JSON';
-  static const onBoard3Dark = 'assets/lotties/Ai-powered-marketing.JSON';
+  static const onBoard1Dark = 'assets/images/core/splash.png';
+  static const onBoard2Dark = 'assets/images/core/splash.png';
+  static const onBoard3Dark = 'assets/images/core/splash.png';
   // Core images
   static const String logo = 'assets/images/core/splash.png';
-  static const String examZone = 'assets/images/core/exam_zone.png';
+  static const String examZone = 'assets/images/core/splash.png';
   static const String examZoneDark = 'assets/images/core/exam_zone_dark.png';
 
   // Icons

@@ -9,6 +9,12 @@ import 'package:graduation/features/essayAI/presentation/cubit/essay_cubit.dart'
 import 'package:graduation/features/generate_choise/data/repositories/exam_choise_repo_impl.dart';
 import 'package:graduation/features/generate_choise/domain/repo/exam_choise_repo.dart';
 import 'package:http/http.dart' as http;
+import 'package:graduation/core/services/firebase_auth_service.dart';
+import 'package:graduation/core/services/data_service.dart';
+import 'package:graduation/core/services/firestore_service.dart';
+import 'package:graduation/features/auth/domain/repos/auth_repos.dart';
+import 'package:graduation/features/auth/data/repos/auth_repo_impl.dart';
+
 final sl = GetIt.instance;
 
 bool _serviceLocatorInitialized = false;
@@ -23,21 +29,32 @@ Future<void> initServiceLocator() async {
     () => EssayRemoteDataSourceImpl(client: sl()),
   );
 
+  // Core services
+  sl.registerLazySingleton<FirebaseAuthService>(() => FirebaseAuthService());
+  sl.registerLazySingleton<DatabaseServices>(() => FirestoreServices());
+
   // Repository for essay feature
   sl.registerLazySingleton<EssayRepository>(
     () => EssayRepositoryImpl(remoteDataSource: sl<EssayRemoteDataSource>()),
   );
 
+  // Auth repository
+  sl.registerLazySingleton<AuthRepo>(
+    () => AuthRepoImpl(
+      firebaseAuthService: sl<FirebaseAuthService>(),
+      databaseServices: sl<DatabaseServices>(),
+    ),
+  );
+
   // Use cases
-  sl.registerLazySingleton(() => GenerateEssayQuestionsUseCase(sl<EssayRepository>()));
+  sl.registerLazySingleton(
+    () => GenerateEssayQuestionsUseCase(sl<EssayRepository>()),
+  );
   sl.registerLazySingleton(() => CorrectEssayUseCase(sl<EssayRepository>()));
 
   // Cubit (بعد الـ use cases)
   sl.registerFactory(
-    () => EssayCubit(
-      generateQuestionsUseCase: sl(),
-      correctEssayUseCase: sl(),
-    ),
+    () => EssayCubit(generateQuestionsUseCase: sl(), correctEssayUseCase: sl()),
   );
 
   // Remote Data Source for choices
@@ -48,7 +65,8 @@ Future<void> initServiceLocator() async {
   // Repository for choices
   sl.registerLazySingleton<ExamChoiseRepo>(
     () => ExamChoiseRepoImpl(
-      remoteDataSourseExamGenerateChoises: sl<RemoteDataSourseExamGenerateChoises>(),
+      remoteDataSourseExamGenerateChoises:
+          sl<RemoteDataSourseExamGenerateChoises>(),
     ),
   );
 
