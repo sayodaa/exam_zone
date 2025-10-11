@@ -5,11 +5,11 @@ import 'package:graduation/core/extensions/context_extension.dart';
 import 'package:graduation/core/language/lang_keys.dart';
 import 'package:graduation/features/essayAI/presentation/cubit/essay_cubit.dart';
 import 'package:graduation/features/essayAI/presentation/cubit/essay_state.dart';
-import 'package:graduation/features/generate_choise/presentation/views/widgets/linear_progrees_indecator.dart';
-import 'package:graduation/features/overwall/presentation/widgets/custom_app_bar_for_exams.dart';
+import 'package:graduation/features/essayAI/presentation/widgets/corrections_list_section.dart';
 import 'package:graduation/features/essayAI/presentation/widgets/essay_input_section.dart';
 import 'package:graduation/features/essayAI/presentation/widgets/questions_list_section.dart';
-import 'package:graduation/features/essayAI/presentation/widgets/corrections_list_section.dart';
+import 'package:graduation/features/generate_choise/presentation/views/widgets/linear_progrees_indecator.dart';
+import 'package:graduation/features/overwall/presentation/widgets/custom_app_bar_for_exams.dart';
 
 class EssayAiBody extends StatefulWidget {
   const EssayAiBody({super.key});
@@ -48,9 +48,6 @@ class _EssayAiBodyState extends State<EssayAiBody> {
           return Column(
             children: [
               // Progress Indicator
-              if (state is GeneratingQuestions || state is CorrectingAnswers)
-                const LinearProgressIndicatorForGenerateExam(),
-              
               Expanded(
                 child: Padding(
                   padding: EdgeInsets.symmetric(
@@ -69,7 +66,8 @@ class _EssayAiBodyState extends State<EssayAiBody> {
                             topicController: _topicController,
                             questionsController: _questionsController,
                             isGenerating: state is GeneratingQuestions,
-                            onGeneratePressed: () => _generateQuestions(context),
+                            onGeneratePressed: () =>
+                                _generateQuestions(context),
                           ),
 
                           // قسم الأسئلة
@@ -77,7 +75,9 @@ class _EssayAiBodyState extends State<EssayAiBody> {
                               state is CorrectingAnswers ||
                               state is AnswersCorrectedSuccess)
                             QuestionsListSection(
-                              questions: context.read<EssayCubit>().currentQuestions,
+                              questions: context
+                                  .read<EssayCubit>()
+                                  .currentQuestions,
                               answerControllers: _answerControllers,
                               isCorrecting: state is CorrectingAnswers,
                               onCorrectPressed: () => _correctAnswers(context),
@@ -87,10 +87,15 @@ class _EssayAiBodyState extends State<EssayAiBody> {
                           if (state is AnswersCorrectedSuccess)
                             CorrectionsListSection(
                               corrections: state.corrections,
-                              questions: context.read<EssayCubit>().currentQuestions,
+                              questions: context
+                                  .read<EssayCubit>()
+                                  .currentQuestions,
                             ),
 
                           SizedBox(height: 24.h),
+                          if (state is GeneratingQuestions ||
+                              state is CorrectingAnswers)
+                            const LinearProgressIndicatorForGenerateExam(),
                         ],
                       ),
                     ),
@@ -135,22 +140,23 @@ class _EssayAiBodyState extends State<EssayAiBody> {
       final numberOfQuestions = int.parse(_questionsController.text.trim());
 
       context.read<EssayCubit>().generateQuestions(
-            topic: topic,
-            numberOfQuestions: numberOfQuestions,
-          );
+        topic: topic,
+        numberOfQuestions: numberOfQuestions,
+      );
     }
   }
 
   void _correctAnswers(BuildContext context) {
     if (_formKey.currentState!.validate()) {
       final questions = context.read<EssayCubit>().currentQuestions;
-      final answers =
-          _answerControllers.map((controller) => controller.text.trim()).toList();
+      final answers = _answerControllers
+          .map((controller) => controller.text.trim())
+          .toList();
 
       context.read<EssayCubit>().correctAnswers(
-            questions: questions,
-            answers: answers,
-          );
+        questions: questions,
+        answers: answers,
+      );
     }
   }
 }

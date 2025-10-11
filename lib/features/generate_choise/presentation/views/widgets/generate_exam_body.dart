@@ -37,7 +37,7 @@ class GenerateExamBody extends StatelessWidget {
               SizedBox(height: 30.h),
               GenerateExamButton(cubit: cubit, state: state),
               SizedBox(height: 40.h),
-        if (state.isGenerating) ...[
+              if (state.isGenerating) ...[
                 TextApp(
                   text: (context).translate(LangKeys.generatingExam),
                   style: AppTextStyles.body14(context),

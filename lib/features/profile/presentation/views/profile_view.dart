@@ -44,9 +44,9 @@ class ProfileView extends StatelessWidget {
                     ],
                   ),
                 ),
-                  
+
                 const SizedBox(height: 20),
-                  
+
                 // بيانات المستخدم
                 Card(
                   margin: const EdgeInsets.all(12),
@@ -75,9 +75,9 @@ class ProfileView extends StatelessWidget {
                     ],
                   ),
                 ),
-                  
+
                 const SizedBox(height: 10),
-                  
+
                 // أزرار الأكشن
                 Padding(
                   padding: const EdgeInsets.all(12.0),
