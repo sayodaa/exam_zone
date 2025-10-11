@@ -17,7 +17,8 @@ abstract class EssayRemoteDataSource {
 }
 
 class EssayRemoteDataSourceImpl implements EssayRemoteDataSource {
-  static const String _apiKey = 'sk-02e178544f904b9696c835285265f303';//sk-02e178544f904b9696c835285265f303
+  static const String _apiKey =
+      'sk-b9c5e64a6da443c48a8aa1f867fdc1ed'; //sk-02e178544f904b9696c835285265f303
   static const String _model = "deepseek-chat";
   static final Uri _apiUrl = Uri.parse(
     "https://api.deepseek.com/v1/chat/completions",
@@ -71,7 +72,7 @@ class EssayRemoteDataSourceImpl implements EssayRemoteDataSource {
     required String answer,
   }) async {
     final prompt =
-      '''
+        '''
   You are a professional teacher. Correct the student's answer based on the essay question.
 
   Question: $question

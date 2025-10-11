@@ -79,7 +79,7 @@ dont add backticks in respone
   // --- Private Helper Function for API Call ---
   // This function handles the direct communication with the DeepSeek API.
   Future<String> _generateWithAI(String predefinedRules) async {
-    const String apiKey = 'sk-02e178544f904b9696c835285265f303';
+    const String apiKey = 'sk-b9c5e64a6da443c48a8aa1f867fdc1ed';
     const String model = "deepseek-chat";
     final Uri apiUrl = Uri.parse(
       "https://api.deepseek.com/v1/chat/completions",

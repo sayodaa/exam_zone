@@ -4,9 +4,12 @@ import 'package:graduation/features/essayAI/data/models/essay_model.dart';
 import 'package:http/http.dart' as http;
 
 class EssayService {
-  static const String _apiKey = 'sk-02e178544f904b9696c835285265f303'; // 🔒 استخدم .env أو secure storage
+  static const String _apiKey =
+      'sk-b9c5e64a6da443c48a8aa1f867fdc1ed'; // 🔒 استخدم .env أو secure storage
   static const String _model = "deepseek-chat";
-  static final Uri _apiUrl = Uri.parse("https://api.deepseek.com/v1/chat/completions");
+  static final Uri _apiUrl = Uri.parse(
+    "https://api.deepseek.com/v1/chat/completions",
+  );
 
   static final Map<String, String> _headers = {
     "Content-Type": "application/json",
@@ -16,7 +19,8 @@ class EssayService {
 
   // ✅ توليد مقال
   static Future<String> generateEssay(String topic) async {
-    final prompt = '''
+    final prompt =
+        '''
 Write a well-structured essay (150-200 words) about the following topic:
 "$topic".
 
@@ -33,7 +37,8 @@ Do not return any explanation. Just the essay.
     required String studentEssay,
     required String topic,
   }) async {
-    final prompt = '''
+    final prompt =
+        '''
 You are a professional English essay grader.
 
 Topic: "$topic"
@@ -70,7 +75,9 @@ Return your answer clearly formatted, no extra messages or notes.
       final data = jsonDecode(utf8.decode(response.bodyBytes));
       return data['choices'][0]['message']['content'].toString().trim();
     } else {
-      throw Exception("API Error: ${response.statusCode} - ${response.reasonPhrase}");
+      throw Exception(
+        "API Error: ${response.statusCode} - ${response.reasonPhrase}",
+      );
     }
   }
 }
